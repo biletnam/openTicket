@@ -1,0 +1,3 @@
+rootProject.name = 'openTicket'
+
+include ':app'
