@@ -12,7 +12,7 @@ class SplashScreen extends Component {
      * 
      */
     componentWillMount() {
-        console.log("Component Will Mount");
+        // console.log("Component Will Mount");
         this.props.populateTickets();
         //timer.clearTimeout(this);
     }
@@ -23,10 +23,11 @@ class SplashScreen extends Component {
      * used to retrieve data from the server via asynchronous calls.
      */
     componentDidMount() {
-        console.log("componentDidUpdate");
+        console.log("Splash componentDidUpdate");
         this.props.setTimeout(() => {
-            Actions.home();
-        }, 400);
+            Actions.index();
+        }, 1000);
+
     }
 
     render() {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Content, Icon, CardItem, Card, Body, Button } from 'native-base';
 import { Text, StyleSheet } from 'react-native';
 
-class PostTicket extends Component {
+class Purchased extends Component {
 
     render() {
         /**
@@ -13,8 +13,10 @@ class PostTicket extends Component {
             <Container>
 
                 <Body>
-                    <Text> This is a platform where you can post tickets. </Text>
+                    <Text> This is Purchased Page. </Text>
                 </Body>
+
+
             </Container>
         );
     }
@@ -27,4 +29,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default PostTicket;
+export default Purchased;

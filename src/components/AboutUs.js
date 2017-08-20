@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Icon, CardItem, Card, Body, Button } from 'native-base';
-import { Text } from 'react-native';
-import { Tabs } from '../navigation/TabNav.js';
+import { Text, StyleSheet } from 'react-native';
 
 class AboutUs extends Component {
 
@@ -12,10 +11,21 @@ class AboutUs extends Component {
          */
         return (
             <Container>
-                <Tabs />
+
+                <Body>
+                    <Text> This is aboutUs Page. </Text>
+                </Body>
+
             </Container>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    icon: {
+        width: 26,
+        height: 26,
+    },
+});
 
 export default AboutUs;

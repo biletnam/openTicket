@@ -1,4 +1,4 @@
-import { FETCH_TICKETS } from '../actions';
+import { FETCH_TICKETS, GET_APP_STATE } from '../actions';
 
 const INITIAL_STATE = {
     tickets: []
@@ -11,8 +11,13 @@ const INITIAL_STATE = {
  */
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
+        case FETCH_TICKETS:
+            return { ...state, ['splashData']: true };
+        case GET_APP_STATE:
+            console.log('Reducer returned state');
+            return state;
         default:
             return state;
-    } 
+    }
 }
 
