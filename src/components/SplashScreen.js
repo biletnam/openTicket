@@ -11,8 +11,9 @@ class SplashScreen extends Component {
     /**
      * 
      */
-    componentWillUnMount() {
-        //this.props.populateTickets();
+    componentWillMount() {
+        console.log("Component Will Mount");
+        this.props.populateTickets();
         //timer.clearTimeout(this);
     }
 
@@ -22,14 +23,14 @@ class SplashScreen extends Component {
      * used to retrieve data from the server via asynchronous calls.
      */
     componentDidMount() {
-        //console.log(this.props);
+        console.log("componentDidUpdate");
         this.props.setTimeout(() => {
             Actions.home();
-        }, 800);
+        }, 400);
     }
 
     render() {
-        console.log(this.props);
+        //console.log(this.props);
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
          * store. The third arguement is the store enhancer.
@@ -56,18 +57,10 @@ class SplashScreen extends Component {
     }
 }
 
-/**
- * 
- * @param {*} state 
- */
-const mapStateToProps = (state) => {
-    const { tickets } = state;
-    return { tickets }
-};
 
 /**
  * React Timeout is a higher order component for React and React Native providing the wrapped component with safe versions of setTimeout, setInterval...
  * When the wrapped component is unmounted, any lingering timers will be canceled automatically.
  */
-export default connect(mapStateToProps, { populateTickets })(
+export default connect(null, { populateTickets })(
     ReactTimeout(SplashScreen));

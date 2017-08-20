@@ -5,17 +5,11 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import RouterComponent from './Router';
-// import LoginForm from './components/LoginForm';
-
+import Login from './components/Login.js';
+import { View } from 'react-native';
+import { Tabs } from './navigation/TabNav.js';
 
 class App extends Component {
-
-    /**
-     * 
-     */
-    componentWillMount() {
-        
-    }
 
     render() {
         /**
