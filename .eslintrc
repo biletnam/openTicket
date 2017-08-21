@@ -7,6 +7,9 @@
         "no-useless-computed-key": 0,
         "no-shadow": 0,
         "quote-props": 0,
-        "no-case-declarations": 0
+        "no-case-declarations": 0,
+        "import/imports-first": 0,
+        "global-require": 0,
+        "react/react-in-jsx-scope": 0
     }
 }
