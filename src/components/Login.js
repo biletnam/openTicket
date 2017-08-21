@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Icon, CardItem, Card, Body, Button } from 'native-base';
-import { Text, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
-import { getAppState } from '../actions';
+import { Text } from 'react-native';
 
 
 class Login extends Component {
-
-    componentWillMount() {
-        this.props.getAppState();
-        console.log('Login componentWillMount');
-    }
-
-
-    componentDidUpdate() {
-        console.log("Login componentDidUpdate");
-        console.log(this.props);
-    }
 
     render() {
         /**
@@ -33,14 +20,5 @@ class Login extends Component {
     }
 }
 
-/**
- * 
- * @param {*} state 
- */
-const mapStateToProps = (state) => {
-    return {
-        tickets: state.tickets
-    }
-};
 
-export default connect(mapStateToProps, { getAppState })(Login);
+export default Login;
