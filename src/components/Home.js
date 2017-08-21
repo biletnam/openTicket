@@ -10,6 +10,10 @@ class Home extends Component {
         this.props.getAppState();
     }
 
+    btnpressed() {
+        this.props.navigation.navigate('Login');
+    }
+
     render() {
         console.log(this.props);
         /**
@@ -21,6 +25,9 @@ class Home extends Component {
 
                 <Body>
                     <Text> This is Home Page. </Text>
+                    <Button Transparent onPress={this.btnpressed.bind(this)} >
+                        <Text>To login page</Text>
+                    </Button>
                 </Body>
 
 
