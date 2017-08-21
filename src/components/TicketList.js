@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Icon, CardItem, Card, Body, Button } from 'native-base';
-import { Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 
-class Home extends Component {
+class TicketList extends Component {
 
     render() {
         /**
@@ -11,15 +11,12 @@ class Home extends Component {
          */
         return (
             <Container>
-
                 <Body>
-                    <Text> This is Home Page. </Text>
+                    <Text> This is a TicketList. </Text>
                 </Body>
-
-
             </Container>
         );
     }
 }
 
-export default Home;
+export default TicketList;
