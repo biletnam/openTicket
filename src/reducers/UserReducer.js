@@ -1,7 +1,21 @@
 
 
 const INITIAL_STATE = {
-    allusers: [],
+    allusers: [
+        {
+            'firstname': 'Fernando',
+            'surname': 'Alonso',
+            'username': 'one',
+            'password': '1one'
+        },
+        {
+            'firstname': 'Max',
+            'surname': 'Verstappen',
+            'username': 'two',
+            'password': '2two'
+        }
+    ],
+
     currentUser: {
         loggedin: false
     }

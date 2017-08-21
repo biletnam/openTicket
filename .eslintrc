@@ -6,6 +6,7 @@
         "max-len": 0,
         "no-useless-computed-key": 0,
         "no-shadow": 0,
-        "quote-props": 0
+        "quote-props": 0,
+        "no-case-declarations": 0
     }
 }
