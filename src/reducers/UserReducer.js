@@ -1,4 +1,5 @@
-
+import _ from 'lodash';
+import { FETCH_TICKETS } from '../actions';
 
 const INITIAL_STATE = {
     allusers: [
@@ -26,8 +27,11 @@ const INITIAL_STATE = {
  * @param {*} state 
  * @param {*} action 
  */
-export default function (state = INITIAL_STATE, action) {
+export default function (state = null, action) {
     switch (action.type) {
+        case FETCH_TICKETS:
+            const users = _.mapKeys(INITIAL_STATE.allusers, 'username');
+            return { ...state, ['users']: users };
         default:
             return state;
     }

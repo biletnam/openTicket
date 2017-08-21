@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Icon, CardItem, Card, Body, Button } from 'native-base';
-import { Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 
 class PostTicket extends Component {
 
@@ -19,12 +19,5 @@ class PostTicket extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    icon: {
-        width: 26,
-        height: 26,
-    },
-});
 
 export default PostTicket;

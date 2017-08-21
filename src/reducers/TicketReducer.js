@@ -19,42 +19,42 @@ const INITIAL_STATE = {
     },
     {
         'from': 'Liverpool Central',
-        'to': 'Manchester Airport',
+        'to': 'Bryn',
         'service': 'Northern Railways',
         'date': 'sep 21, 2017',
         'price': 30
     },
     {
         'from': 'Liverpool Central',
-        'to': 'Manchester Airport',
+        'to': 'London st pancras international',
         'service': 'Northern Railways',
         'date': 'nov 2, 2017',
         'price': 33
     },
     {
         'from': 'Liverpool Central',
-        'to': 'Manchester Airport',
+        'to': 'Folkestone central',
         'service': 'Northern Railways',
         'date': 'dec 12, 2017',
         'price': 22
     },
     {
-        'from': 'Liverpool Central',
-        'to': 'Manchester Airport',
+        'from': 'Canterbury',
+        'to': 'Luton',
         'service': 'Northern Railways',
         'date': 'jan 3, 2018',
         'price': 5
     },
     {
-        'from': 'Liverpool Central',
-        'to': 'Manchester Airport',
+        'from': 'London Waterloo',
+        'to': 'Clapham Junction',
         'service': 'Northern Railways',
         'date': 'feb 3, 2018',
         'price': 3
     },
     {
-        'from': 'Liverpool Central',
-        'to': 'Manchester Airport',
+        'from': 'Kingston',
+        'to': 'Reading',
         'service': 'Northern Railways',
         'date': 'nov 22, 2017',
         'price': 6
@@ -67,14 +67,12 @@ const INITIAL_STATE = {
  * @param {*} state 
  * @param {*} action 
  */
-export default function (state = INITIAL_STATE, action) {
+export default function (state = null, action) {
     switch (action.type) {
         case FETCH_TICKETS:
             const mappedTickets = _.mapKeys(INITIAL_STATE.tickets, 'date');
-            console.log(mappedTickets);
-            return { ...state, ['splashData']: true };
+            return { ...state, ['tickets']: mappedTickets, ['splashData']: true };
         case GET_APP_STATE:
-            console.log('Reducer returned state');
             return state;
         default:
             return state;
