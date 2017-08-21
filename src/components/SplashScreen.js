@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Provider, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { View, Image, Text } from 'react-native';
-import styles from '../../styles.js';
 import { populateTickets } from '../actions';
 import { Actions } from 'react-native-router-flux';
 import ReactTimeout from 'react-timeout';
@@ -12,9 +11,7 @@ class SplashScreen extends Component {
      * 
      */
     componentWillMount() {
-        // console.log("Component Will Mount");
         this.props.populateTickets();
-        //timer.clearTimeout(this);
     }
 
     /**
@@ -23,11 +20,9 @@ class SplashScreen extends Component {
      * used to retrieve data from the server via asynchronous calls.
      */
     componentDidMount() {
-        console.log("Splash componentDidUpdate");
         this.props.setTimeout(() => {
             Actions.index();
         }, 1000);
-
     }
 
     render() {
