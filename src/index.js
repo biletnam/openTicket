@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 //Redux thunk is a middleware
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import RouterComponent from './Router';
-import Login from './components/Login.js';
-import { View } from 'react-native';
-import { Tabs } from './navigation/TabNav.js';
 
 class App extends Component {
 

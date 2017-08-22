@@ -10,6 +10,8 @@
         "no-case-declarations": 0,
         "import/imports-first": 0,
         "global-require": 0,
-        "react/react-in-jsx-scope": 0
+        "react/react-in-jsx-scope": 0,
+        "react/no-multi-comp": 0,
+        "react/jsx-closing-bracket-location": 0
     }
 }

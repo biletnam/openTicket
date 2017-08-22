@@ -1,7 +1,7 @@
 import React from 'react';
 import { Scene, Router } from 'react-native-router-flux';
 import SplashScreen from './components/SplashScreen.js';
-import Index from './components/Index.js';
+import TabNavComponent from './components/TabNavComponent.js';
 
 const RouterComponent = () => {
     return (
@@ -12,7 +12,7 @@ const RouterComponent = () => {
                 </Scene>
 
                 <Scene key="index">
-                    <Scene key="main" component={Index} hideNavBar />
+                    <Scene key="main" component={TabNavComponent} hideNavBar />
                 </Scene>
             </Scene>
         </Router>

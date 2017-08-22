@@ -15,6 +15,7 @@ class Home extends Component {
     }
 
     render() {
+        console.log('home');
         console.log(this.props);
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
@@ -40,9 +41,10 @@ class Home extends Component {
  * 
  * @param {*} state 
  */
-function mapStateToProps({ tickets }) {
+function mapStateToProps({ tickets, users }) {
     return {
-        tickets
+        tickets,
+        users
     };
 }
 

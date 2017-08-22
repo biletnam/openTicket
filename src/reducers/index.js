@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import TicketReducer from './TicketReducer.js';
 import UserReducer from './UserReducer.js';
+import NavReducer from './nav.js';
 /**
  * combineReducers neatly gathers results from all the reducers
  * to a single state object. The shape of the state object matches the keys of 
@@ -12,5 +13,6 @@ import UserReducer from './UserReducer.js';
  */
 export default combineReducers({
     tickets: TicketReducer,
-    users: UserReducer
+    users: UserReducer,
+    nav: NavReducer
 });

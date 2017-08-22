@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Container } from 'native-base';
-import { Text } from 'react-native';
 import { Tabs } from '../navigation/TabNav.js';
 
 class Index extends Component {
