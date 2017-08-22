@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Image, Text } from 'react-native';
-import { populateTickets, populateUsers } from '../actions';
+import { getDataFromServer, populateUsers } from '../actions';
 import { Actions } from 'react-native-router-flux';
 import ReactTimeout from 'react-timeout';
 
@@ -11,8 +11,7 @@ class SplashScreen extends Component {
      * 
      */
     componentWillMount() {
-        this.props.populateTickets();
-        //this.props.populateUsers();
+        this.props.getDataFromServer();
     }
 
     /**
@@ -23,7 +22,7 @@ class SplashScreen extends Component {
     componentDidMount() {
         this.props.setTimeout(() => {
             Actions.index();
-        }, 1000);
+        }, 1300);
     }
 
     render() {
@@ -58,5 +57,5 @@ class SplashScreen extends Component {
  * React Timeout is a higher order component for React and React Native providing the wrapped component with safe versions of setTimeout, setInterval...
  * When the wrapped component is unmounted, any lingering timers will be canceled automatically.
  */
-export default connect(null, { populateTickets, populateUsers })(
+export default connect(null, { getDataFromServer, populateUsers })(
     ReactTimeout(SplashScreen));

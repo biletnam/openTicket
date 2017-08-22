@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { FETCH_TICKETS, GET_APP_STATE } from '../actions';
+import { GET_DATA_FROM_SERVER, GET_APP_STATE } from '../actions';
 
 const INITIAL_STATE = {
     tickets: [{
@@ -69,7 +69,7 @@ const INITIAL_STATE = {
  */
 export default function (state = null, action) {
     switch (action.type) {
-        case FETCH_TICKETS:
+        case GET_DATA_FROM_SERVER:
             const mappedTickets = _.mapKeys(INITIAL_STATE.tickets, 'date');
             return { ...state, ['tickets']: mappedTickets, ['splashData']: true };
         case GET_APP_STATE:

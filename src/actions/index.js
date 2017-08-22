@@ -1,12 +1,12 @@
-export const FETCH_TICKETS = 'fetch_tickets';
+export const GET_DATA_FROM_SERVER = 'GET_DATA_FROM_SERVER';
 export const GET_APP_STATE = 'get_app_state';
 
 /**
  * 
  */
-export const populateTickets = () => {
+export const getDataFromServer = () => {
     return {
-        type: FETCH_TICKETS
+        type: GET_DATA_FROM_SERVER
     };
 };
 
@@ -15,7 +15,7 @@ export const populateTickets = () => {
  */
 export const populateUsers = () => {
     return {
-        type: FETCH_TICKETS
+        type: GET_DATA_FROM_SERVER
     };
 };
 

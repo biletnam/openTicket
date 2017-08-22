@@ -29,6 +29,33 @@ export const homeStack = StackNavigator({
     }
 });
 
+export const postTicket = StackNavigator({
+    'Post Ticket': {
+        screen: PostTicket,
+        navigationOptions: {
+            title: 'Post Ticket'
+        }
+    }
+});
+
+export const purchase = StackNavigator({
+    'Purchase': {
+        screen: Purchased,
+        navigationOptions: {
+            title: 'Purchase'
+        }
+    }
+});
+
+export const aboutUs = StackNavigator({
+    'About Us': {
+        screen: AboutUs,
+        navigationOptions: {
+            title: 'About Us'
+        }
+    }
+});
+
 
 export const Tabs = TabNavigator({
     'Home': {
@@ -46,7 +73,7 @@ export const Tabs = TabNavigator({
         }
     },
     'Post Ticket': {
-        screen: PostTicket,
+        screen: postTicket,
         navigationOptions: {
             postticket_tabBarIcon: {
                 label: 'Post Ticket',
@@ -60,7 +87,7 @@ export const Tabs = TabNavigator({
         }
     },
     'Purchase': {
-        screen: Purchased,
+        screen: purchase,
         navigationOptions: {
             login_tabBarIcon: {
                 label: 'Purchased',
@@ -74,7 +101,7 @@ export const Tabs = TabNavigator({
         }
     },
     'About': {
-        screen: AboutUs,
+        screen: aboutUs,
         navigationOptions: {
             aboutUs_tabBarIcon: {
                 label: 'About Us',
