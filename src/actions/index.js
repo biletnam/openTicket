@@ -27,3 +27,8 @@ export function getAppState() {
         type: GET_APP_STATE
     };
 }
+
+export function navToPostTicket(navigation) {
+    navigation.navigate('Post Ticket');
+    return { type: null };
+}

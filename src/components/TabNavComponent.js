@@ -18,7 +18,7 @@ class TabNavComponent extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        nav: state.nav
+        nav: state.nav 
     };
 };
 

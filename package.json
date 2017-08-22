@@ -6,9 +6,15 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
+  "rnpm": {
+    "assets": [
+      "/assets/fonts/"
+    ]
+  },
   "dependencies": {
     "babel-preset-react-native": "^2.1.0",
     "eslint-config-rallycoding": "^3.2.0",
+    "firebase": "^4.3.0",
     "lodash": "^4.17.4",
     "native-base": "^2.3.1",
     "react": "16.0.0-alpha.12",
@@ -19,6 +25,7 @@
     "react-redux": "^5.0.6",
     "react-timeout": "^1.0.1",
     "redux": "^3.7.2",
+    "redux-form": "^7.0.3",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {

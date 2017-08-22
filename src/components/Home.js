@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Content, Icon, CardItem, Card, Body, Button } from 'native-base';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
-import { getAppState } from '../actions';
+import { getAppState, navToPostTicket } from '../actions';
 
 class Home extends Component {
 
@@ -51,4 +51,4 @@ function mapStateToProps({ tickets, users }) {
 /**
  * 
  */
-export default connect(mapStateToProps, { getAppState })(Home);
+export default connect(mapStateToProps, { getAppState, navToPostTicket })(Home);

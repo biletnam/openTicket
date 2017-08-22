@@ -18,13 +18,13 @@ export const homeStack = StackNavigator({
     Login: {
         screen: Login,
         navigationOptions: {
-            title: 'Login'
+            title: 'Home'
         }
     },
     Register: {
         screen: Register,
         navigationOptions: {
-            title: 'Register User'
+            title: 'Login'
         }
     }
 });
@@ -61,7 +61,7 @@ export const Tabs = TabNavigator({
     'Home': {
         screen: homeStack,
         navigationOptions: {
-            login_tabBarIcon: {
+            login_tabBar: {
                 label: 'Home',
                 tabBarIcon: ({ tintColor }) => (
                     <Image
@@ -75,9 +75,9 @@ export const Tabs = TabNavigator({
     'Post Ticket': {
         screen: postTicket,
         navigationOptions: {
-            postticket_tabBarIcon: {
+            postticket_tabBar: {
                 label: 'Post Ticket',
-                icon: ({ tintColor }) => (
+                tabBarIcon: ({ tintColor }) => (
                     <Image
                         source={require('./icons/home.png')}
                         style={[styles.icon, { tintColor }]}
@@ -89,7 +89,7 @@ export const Tabs = TabNavigator({
     'Purchase': {
         screen: purchase,
         navigationOptions: {
-            login_tabBarIcon: {
+            login_tabBar: {
                 label: 'Purchased',
                 tabBarIcon: ({ tintColor }) => (
                     <Image
@@ -103,7 +103,7 @@ export const Tabs = TabNavigator({
     'About': {
         screen: aboutUs,
         navigationOptions: {
-            aboutUs_tabBarIcon: {
+            aboutUs_tabBar: {
                 label: 'About Us',
                 tabBarIcon: ({ tintColor }) => (
                     <Image
