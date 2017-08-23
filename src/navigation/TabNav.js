@@ -12,7 +12,8 @@ export const homeStack = StackNavigator({
     Home: {
         screen: Home,
         navigationOptions: {
-            title: 'Home'
+            title: 'Home',
+            backgroundColor: 'grey'
         }
     },
     Login: {
@@ -39,7 +40,7 @@ export const postTicket = StackNavigator({
 });
 
 export const purchase = StackNavigator({
-    'Purchase': {
+    'My Purchase': {
         screen: Purchased,
         navigationOptions: {
             title: 'Purchase'

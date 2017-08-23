@@ -7,56 +7,56 @@ const INITIAL_STATE = {
         'from': 'Liverpool Central',
         'to': 'Manchester Airport',
         'service': 'Northern Railways',
-        'date': 'aug 21, 2017',
+        'date': '21-08-2017',
         'price': 10
     },
     {
         'from': 'Edge hill',
         'to': 'Liverpool Lime ST',
         'service': 'Northern Railways',
-        'date': 'aug 1, 2017',
+        'date': '1-08-2017',
         'price': 30
     },
     {
         'from': 'Liverpool Central',
         'to': 'Bryn',
         'service': 'Northern Railways',
-        'date': 'sep 21, 2017',
+        'date': '21-09-2017',
         'price': 30
     },
     {
         'from': 'Liverpool Central',
         'to': 'London st pancras international',
         'service': 'Northern Railways',
-        'date': 'nov 2, 2017',
+        'date': '02-11-2017',
         'price': 33
     },
     {
         'from': 'Liverpool Central',
         'to': 'Folkestone central',
         'service': 'Northern Railways',
-        'date': 'dec 12, 2017',
+        'date': '12-12-2017',
         'price': 22
     },
     {
         'from': 'Canterbury',
         'to': 'Luton',
         'service': 'Northern Railways',
-        'date': 'jan 3, 2018',
+        'date': '03-01-2018',
         'price': 5
     },
     {
         'from': 'London Waterloo',
         'to': 'Clapham Junction',
         'service': 'Northern Railways',
-        'date': 'feb 3, 2018',
+        'date': '03-02-2018',
         'price': 3
     },
     {
         'from': 'Kingston',
         'to': 'Reading',
         'service': 'Northern Railways',
-        'date': 'nov 22, 2017',
+        'date': '22-11-2017',
         'price': 6
     }
     ]

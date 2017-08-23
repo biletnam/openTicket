@@ -14,7 +14,7 @@ class AboutUs extends Component {
         return (
             <Card>
                 <Text style={{ fontFamily: 'Chewy-Regular', fontSize: 30, textAlign: 'center', padding: 20, backgroundColor: 'transparent' }}> WE ARE NOVA</Text>
-                <CardSection>
+                <CardSection style={{ backgroundColor: '#b3b300' }}>
                     <Text style={{ textAlign: 'left', fontFamily: 'Chewy-Regular' }}>{`
                         We Are Nova 
                         29-31 Parliament Street
@@ -24,7 +24,7 @@ class AboutUs extends Component {
                         Phone: 01234354354
                     `}</Text>
                 </CardSection>
-            </Card>
+            </Card >
         );
     }
 }

@@ -31,7 +31,7 @@ export default function (state = null, action) {
     switch (action.type) {
         case GET_DATA_FROM_SERVER:
             const users = _.mapKeys(INITIAL_STATE.allusers, 'username');
-            return { ...state, ['users']: users };
+            return { ...state, ['users']: users, 'current user': INITIAL_STATE.currentUser };
         default:
             return state;
     }
