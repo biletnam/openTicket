@@ -3,6 +3,9 @@ import { addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Tabs } from '../navigation/TabNav.js';
 
+/**
+ * 
+ */
 class TabNavComponent extends Component {
     render() {
         return (
@@ -16,10 +19,17 @@ class TabNavComponent extends Component {
     }
 }
 
+/**
+ * 
+ * @param {*} state 
+ */
 const mapStateToProps = (state) => {
     return {
-        nav: state.nav 
+        nav: state.nav
     };
 };
 
+/**
+ * 
+ */
 export default connect(mapStateToProps)(TabNavComponent);

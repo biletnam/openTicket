@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Container, Header, Content, Icon, CardItem, Card, Body, Button } from 'native-base';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import { CardSection } from './CardSection.js';
 import { Card } from './Card';
 
@@ -14,7 +14,7 @@ class AboutUs extends Component {
         return (
             <Card>
                 <Text style={{ fontFamily: 'Chewy-Regular', fontSize: 30, textAlign: 'center', padding: 20, backgroundColor: 'transparent' }}> WE ARE NOVA</Text>
-                <CardSection style={{ backgroundColor: '#b3b300' }}>
+                <CardSection style={{ backgroundColor: '#7bea7b' }}>
                     <Text style={{ textAlign: 'left', fontFamily: 'Chewy-Regular' }}>{`
                         We Are Nova 
                         29-31 Parliament Street

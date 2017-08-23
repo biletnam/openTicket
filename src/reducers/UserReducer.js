@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { GET_DATA_FROM_SERVER } from '../actions';
 
 const INITIAL_STATE = {
@@ -6,14 +5,16 @@ const INITIAL_STATE = {
         {
             'firstname': 'Fernando',
             'surname': 'Alonso',
-            'username': 'one',
-            'password': '1one'
+            'username': 'faone',
+            'password': '1one',
+            'ticket_purchased': []
         },
         {
             'firstname': 'Max',
             'surname': 'Verstappen',
-            'username': 'two',
-            'password': '2two'
+            'username': 'mvtwo',
+            'password': '2two',
+            'ticket_purchased': []
         }
     ],
 
@@ -30,8 +31,7 @@ const INITIAL_STATE = {
 export default function (state = null, action) {
     switch (action.type) {
         case GET_DATA_FROM_SERVER:
-            const users = _.mapKeys(INITIAL_STATE.allusers, 'username');
-            return { ...state, ['users']: users, 'current user': INITIAL_STATE.currentUser };
+            return { ...state, ['users']: INITIAL_STATE.allusers, 'current user': INITIAL_STATE.currentUser };
         default:
             return state;
     }

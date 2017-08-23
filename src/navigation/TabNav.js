@@ -3,9 +3,10 @@ import Home from '../components/Home.js';
 import Purchased from '../components/Purchased.js';
 import PostTicket from '../components/PostTicket.js';
 import AboutUs from '../components/AboutUs.js';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, Text } from 'react-native';
 import Login from '../components/Login.js';
 import Register from '../components/Register.js';
+import { Icon } from 'native-base';
 
 
 export const homeStack = StackNavigator({
@@ -63,12 +64,10 @@ export const Tabs = TabNavigator({
         screen: homeStack,
         navigationOptions: {
             login_tabBar: {
-                label: 'Home',
-                tabBarIcon: ({ tintColor }) => (
-                    <Image
-                        source={require('./icons/home.png')}
-                        style={[styles.icon, { tintColor }]}
-                    />
+                tabBarVisible: true,
+                label: ({ tintColor, focused }) => (<Text style={{ fontFamily: 'Chewy-Regular', tintColor, focused }}>Home</Text>),
+                tabBarIcon: () => (
+                    <Icon size={20} name='home' color={'red'} />
                 )
             }
         }
@@ -77,11 +76,11 @@ export const Tabs = TabNavigator({
         screen: postTicket,
         navigationOptions: {
             postticket_tabBar: {
-                label: 'Post Ticket',
-                tabBarIcon: ({ tintColor }) => (
+                tabBarVisible: true,
+                renderIcon: ({ tintColor }) => (
                     <Image
+                        style={{ width: 20, height: 20, tintColor }}
                         source={require('./icons/home.png')}
-                        style={[styles.icon, { tintColor }]}
                     />
                 )
             }
@@ -122,6 +121,7 @@ export const Tabs = TabNavigator({
         swipeEnabled: true,
         tabBarOptions: {
             showIcon: true,
+            showLabel: true,
             upperCaseLabel: false,
             labelStyle: {
                 padding: 5,

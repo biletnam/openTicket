@@ -3,11 +3,11 @@ import { View } from 'react-native';
 
 // This is just to look nice and wrap other components around
 // with the sole purpose of adding styling to the application
-const Card = (props) => 
+const Card = (props) =>
     //Anytime we passs a component that rewrites another component
     //that component will showup on the props object as props.children
-     (
-        <View style={styles.containerStyle}>
+    (
+        <View style={[styles.containerStyle, props.style]}>
             {props.children}
         </View>
     );
@@ -24,9 +24,8 @@ const styles = {
         elevation: 4,
         shadowRadius: 2,
         marginLeft: 5,
-        marginRight: 5,
-        marginTop: 5
-
+        marginTop: 5,
+        padding: 6
     }
 
 };

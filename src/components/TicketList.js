@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
-import { ListView, Text, View } from 'react-native';
+import { Text, FlatList, View } from 'react-native';
 import { Card } from './Card.js';
 import { CardSection } from './CardSection.js';
-import { Button } from './Button.js';
-import { connect } from 'react-redux';
 import TicketItem from './TicketItem.js';
 import _ from 'lodash';
-import { reduxForm, Field } from 'redux-form';
-import DatePickerForm from './DatePicker.js';
+import { reduxForm, } from 'redux-form';
 import DatePicker from 'react-native-datepicker';
-import { Input, Form } from 'native-base';
-import Moment from 'moment';
-
-
-
 
 class TicketList extends Component {
 
@@ -23,50 +15,33 @@ class TicketList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tickets_main: this.props.tickets,
-            tickets_copy: this.props.tickets
+            date: formattedDate(),
+            tickets_main: this.props.tickets.tickets,
+            tickets_copy: this.props.tickets.tickets
         };
     }
 
     /**
      * 
      */
-    componentWillMount() {
-        console.log('componentWillMount');
-        this.createDataSource(this.state.tickets_copy);
-    }
-
-    /**
-     * 
-     */
-    createDataSource({ tickets }) {
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 != r2
-        });
-        this.dataSource = ds.cloneWithRows(tickets);
-        console.log('this.dataSource', this.dataSource);
-    }
-
-    /**
-     * 
-     */
     filterTickets(date) {
-        let filtered_data = [];
+        console.log('new Date', date);
+        const filtered_tickets = [];
         _.map(this.state.tickets_main, ticket => {
-            if (ticket.date < date.filter_date) {
-                return [...filtered_data, filtered_data[ticket.date] = ticket];
+            if (ticket.date < date) {
+                console.log('valid ticket');
+                return filtered_tickets.push(ticket);
             }
         });
 
-        if (filtered_data !== undefined) {
-            console.log(filtered_data);
+        if (filtered_tickets !== undefined) {
+            console.log('filtered_tickets => ', filtered_tickets);
         }
 
-        const filtered_tickets = _.mapKeys(filtered_data, "date");
         this.setState({
-            tickets_copy: filtered_tickets
+            tickets_copy: filtered_tickets,
+            date
         });
-
     }
 
 
@@ -77,98 +52,88 @@ class TicketList extends Component {
         if (this.state.tickets_copy === null || Object.keys(this.state.tickets_copy) < 1) {
             return (
                 <CardSection style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ alignSelf: 'center', justifyContent: 'center', color: '#d9534f' }}>
+                    <Text style={{ alignSelf: 'center', justifyContent: 'center', color: '#d9534f', fontFamily: 'Chewy-Regular' }}>
                         No Data available in the record!!!
                 </Text>
                 </CardSection>
-            )
-        }
-        console.log('renderTickets datasource', this.dataSource);
-        return _.map(this.state.tickets_copy, ticket => {
-            return (
-                <View key={ticket.date}>
-                    <Text>
-                        Some Text
-                    </Text>
-                </View>
             );
-        });
-    }
+        }
+        console.log('renderTickets ticket_copy', this.state.tickets_copy);
 
-    dateChanged(date) {
-        console.log('datechanged', date);
+        return (
+            <View style={{ alignSelf: 'flex-start', marginTop: 5, flexDirection: 'column' }}>
+                <Card style={{ backgroundColor: '#7bea7b', borderRadius: 4, marginBottom: 6, padding: 5 }}>
+                    <Text style={{ color: '#fff', fontFamily: 'Chewy-Regular' }}>{`Total Tickets Found:  ${this.state.tickets_copy.length}`}</Text></Card>
+                <View style={{ flex: 1, position: 'relative' }}>
+                    <FlatList
+                        data={this.state.tickets_copy}
+                        keyExtractor={ticket => ticket.date}
+                        renderItem={(ticket) => (
+                            <TicketItem ticket={ticket} buy={this.props.buy} />
+                        )}
+                    />
+                </View>
+            </View>
+        );
     }
 
     render() {
-        const { handleSubmit } = this.props;
-        console.log('field props?? ', this.props);
-
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
          * store. The third arguement is the store enhancer.
          */
         return (
-            <Card>
+            <View>
                 <CardSection>
-                    <Text style={{ alignSelf: 'center', justifyContent: 'center' }}> Display Until:</Text>
+                    <Text style={{ alignSelf: 'center', justifyContent: 'center', fontFamily: 'Chewy-Regular' }}> Display Until:</Text>
 
                     <DatePicker
-                        style={{ flex: 1 }}
+                        style={{ flex: 1, paddingTop: 10 }}
                         mode="date"
-                        date='23-08-2017'
-                        placeholder="select date"
-                        format="DD-MM-YYYY"
+                        date={this.state.date}
+                        format="YYYY-MM-DD"
                         confirmBtnText="Confirm"
                         cancelBtnText="Cancel"
                         customStyles={{
                             dateInput: {
-                                marginLeft: 5
+                                marginLeft: 4,
+                                borderRadius: 10,
+                                marginBottom: 5,
+                                backgroundColor: '#f6f6ee',
+                                borderColor: '#f6f6ee',
                             }
                         }}
-                        onDateChange={(date) => { console.log('changed date', date) }}
+                        onDateChange={this.filterTickets.bind(this)}
 
                     />
-
-                    <Button
-                        description='Filter'
-                        onPress={handleSubmit(this.filterTickets.bind(this))} />
                 </CardSection>
-
-                <CardSection>
+                <View>
                     {this.renderTickets()}
-                </CardSection>
-
-            </Card>
+                </View>
+            </View>
         );
     }
-
-    /**
-     * 
-     * @param {*} field 
-     */
-    renderDateField(field) {
-        return (
-            <DatePickerForm
-            />
-        )
-    }
 }
 
-function validateForm(fields) {
-    const errors = {};
-    //validate the inputs from 'values'
-    //if errors is empty the form is valid
-    if (!fields.filter_date) {
-        //the title property for the errors object directly links with the name property of the field
-        errors.filter_date = "Please provide the filter date!";
-    }
-    return errors;
+/**
+ *
+ * @param {*} 
+                */
+function formattedDate(d = new Date()) {
+    let month = String(d.getMonth() + 1);
+    let day = String(d.getDate());
+    const year = String(d.getFullYear());
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return `${year}-${month}-${day}`;
 }
+
 
 /**
  *
  */
 export default reduxForm({
-    validate: validateForm,
-    form: 'RegisterForm'
+    form: 'FilterByDate'
 })(TicketList);

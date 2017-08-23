@@ -4,8 +4,8 @@ import { Text, TouchableOpacity } from 'react-native';
 const Button = (props) => {
     const { buttonStyle, textStyle } = styles;
     return (
-        <TouchableOpacity onPress={props.onPress} style={buttonStyle}>
-            <Text style={textStyle}> {props.description} </Text>
+        <TouchableOpacity onPress={props.onPress} style={[buttonStyle, props.buttonStyle]}>
+            <Text style={[textStyle, props.textStyle]}> {props.description} </Text>
         </TouchableOpacity>
     );
 };
@@ -28,7 +28,8 @@ const styles = {
         fontSize: 12,
         fontWeight: '900',
         paddingLeft: 7,
-        paddingRight: 7
+        paddingRight: 7,
+        fontFamily: 'Chewy-Regular'
     }
 };
 
