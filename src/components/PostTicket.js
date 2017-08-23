@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Icon, CardItem, Card, Body, Button } from 'native-base';
 import { Text } from 'react-native';
+import Login from './Login.js';
 
 class PostTicket extends Component {
 
@@ -10,12 +11,7 @@ class PostTicket extends Component {
          * store. The third arguement is the store enhancer.
          */
         return (
-            <Container>
-
-                <Body>
-                    <Text> This is a platform where you can post tickets. </Text>
-                </Body>
-            </Container>
+            <Login />
         );
     }
 }

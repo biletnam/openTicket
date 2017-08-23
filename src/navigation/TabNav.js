@@ -63,21 +63,10 @@ export const Tabs = TabNavigator({
     'Home': {
         screen: homeStack,
         navigationOptions: {
-            login_tabBar: {
+            temp: {
                 tabBarVisible: true,
-                label: ({ tintColor, focused }) => (<Text style={{ fontFamily: 'Chewy-Regular', tintColor, focused }}>Home</Text>),
-                tabBarIcon: () => (
-                    <Icon size={20} name='home' color={'red'} />
-                )
-            }
-        }
-    },
-    'Post Ticket': {
-        screen: postTicket,
-        navigationOptions: {
-            postticket_tabBar: {
-                tabBarVisible: true,
-                renderIcon: ({ tintColor }) => (
+                tabBarLabel: 'Home',
+                tabBarIcon: ({ tintColor }) => (
                     <Image
                         style={{ width: 20, height: 20, tintColor }}
                         source={require('./icons/home.png')}
@@ -86,34 +75,52 @@ export const Tabs = TabNavigator({
             }
         }
     },
+    'Post Ticket': {
+        screen: postTicket,
+        navigationOptions: {
+            temp: {
+                tabBarVisible: true,
+                tabBarLabel: 'Post Ticket',
+                tabBarIcon: ({ tintColor }) => (
+                    <Image
+                        style={{ width: 20, height: 20, tintColor }}
+                        source={require('./icons/home.png')}
+                    />
+                )
+            }
+
+        }
+    },
     'Purchase': {
         screen: purchase,
         navigationOptions: {
-            login_tabBar: {
-                label: 'Purchased',
+            temp: {
+                tabBarVisible: true,
+                tabBarLabel: 'Purchase',
                 tabBarIcon: ({ tintColor }) => (
                     <Image
+                        style={{ width: 20, height: 20, tintColor }}
                         source={require('./icons/home.png')}
-                        style={[styles.icon, { tintColor }]}
                     />
                 )
             }
         }
     },
-    'About': {
+    'About Us': {
         screen: aboutUs,
         navigationOptions: {
-            aboutUs_tabBar: {
-                label: 'About Us',
+            temp: {
+                tabBarVisible: true,
+                tabBarLabel: 'About Us',
                 tabBarIcon: ({ tintColor }) => (
                     <Image
+                        style={{ width: 20, height: 20, tintColor }}
                         source={require('./icons/home.png')}
-                        style={[styles.icon, { tintColor }]}
                     />
                 )
             }
         }
-    },
+    }
 },
     {
         initialRouteName: 'Home',

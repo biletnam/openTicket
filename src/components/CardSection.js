@@ -13,6 +13,7 @@ export const CardSection = (props) => {
 const style = {
     containerStyle: {
         borderBottomWidth: 1,
+        borderColor: '#000',
         padding: 5,
         //justify content rule applies to align items either vertically or horizontally
         justifyContent: 'flex-start',

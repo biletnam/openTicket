@@ -18,13 +18,14 @@ class TicketItem extends Component {
      * 
      */
     loginBtnClicked() {
-
+        this.props.loginPage();
     }
 
     /**
      * 
      */
     render() {
+        console.log('from ticketlist nav = ', this.props);
         const { buyButton, loginButton, loginTextStyle, buyTextStyle } = styles;
         const { item } = this.props.ticket;
         const btn = this.props.buy ? <Button description="Buy" buttonStyle={buyButton} textStyle={buyTextStyle} onPress={this.buyBtnClicked.bind(this)} /> :

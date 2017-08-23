@@ -8,6 +8,13 @@ import TicketList from './TicketList.js';
 
 class Home extends Component {
 
+    /**
+     * 
+     */
+    loginComponent() {
+        this.props.navigation.navigate('Login');
+    }
+
     render() {
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
@@ -19,6 +26,7 @@ class Home extends Component {
                     screenProps={this.props.navigation}
                     tickets={this.props.tickets}
                     buy={false}
+                    loginPage={this.loginComponent.bind(this)}
                 />
             </View>
         );

@@ -63,13 +63,13 @@ class TicketList extends Component {
         return (
             <View style={{ alignSelf: 'flex-start', marginTop: 5, flexDirection: 'column' }}>
                 <Card style={{ backgroundColor: '#7bea7b', borderRadius: 4, marginBottom: 6, padding: 5 }}>
-                    <Text style={{ color: '#fff', fontFamily: 'Chewy-Regular' }}>{`Total Tickets Found:  ${this.state.tickets_copy.length}`}</Text></Card>
-                <View style={{ flex: 1, position: 'relative' }}>
+                    <Text style={{ color: '#fff', fontFamily: 'Chewy-Regular' }}>{`${this.state.tickets_copy.length} tickets found!`}</Text></Card>
+                <View style={{ flex: 1, position: 'relative', flexDirection: 'column' }}>
                     <FlatList
                         data={this.state.tickets_copy}
                         keyExtractor={ticket => ticket.date}
                         renderItem={(ticket) => (
-                            <TicketItem ticket={ticket} buy={this.props.buy} />
+                            <TicketItem ticket={ticket} buy={this.props.buy} loginPage={this.props.loginPage} />
                         )}
                     />
                 </View>
@@ -78,6 +78,7 @@ class TicketList extends Component {
     }
 
     render() {
+        console.log('ticketlist', this.props);
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
          * store. The third arguement is the store enhancer.
@@ -107,7 +108,7 @@ class TicketList extends Component {
 
                     />
                 </CardSection>
-                <View>
+                <View style={{ backgroundColor: '#fff' }}>
                     {this.renderTickets()}
                 </View>
             </View>
@@ -116,9 +117,8 @@ class TicketList extends Component {
 }
 
 /**
- *
- * @param {*} 
-                */
+ * 
+ */
 function formattedDate(d = new Date()) {
     let month = String(d.getMonth() + 1);
     let day = String(d.getDate());
@@ -134,6 +134,4 @@ function formattedDate(d = new Date()) {
 /**
  *
  */
-export default reduxForm({
-    form: 'FilterByDate'
-})(TicketList);
+export default TicketList;
