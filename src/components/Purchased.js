@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Icon, CardItem, Card, Body, Button } from 'native-base';
-import { Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Login from './Login.js';
+import { LoginPrompt } from './labels/LoginPrompt.js';
 
 
 class Purchased extends Component {
@@ -12,7 +13,13 @@ class Purchased extends Component {
          * store. The third arguement is the store enhancer.
          */
         return (
-            <Login />
+            <View>
+                <LoginPrompt />
+                <Login
+                    navigation={this.props.navigation}
+                />
+            </View>
+
         );
     }
 }

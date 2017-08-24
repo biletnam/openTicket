@@ -6,7 +6,6 @@ import AboutUs from '../components/AboutUs.js';
 import { Image, StyleSheet, Text } from 'react-native';
 import Login from '../components/Login.js';
 import Register from '../components/Register.js';
-import { Icon } from 'native-base';
 
 
 export const homeStack = StackNavigator({
@@ -26,7 +25,7 @@ export const homeStack = StackNavigator({
     Register: {
         screen: Register,
         navigationOptions: {
-            title: 'Login'
+            title: 'Home'
         }
     }
 });

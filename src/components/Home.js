@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Icon, CardItem, Body, Button } from 'native-base';
-import { CardSection } from './CardSection.js';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { getAppState, navToPostTicket } from '../actions';
 import TicketList from './TicketList.js';
@@ -13,6 +11,13 @@ class Home extends Component {
      */
     loginComponent() {
         this.props.navigation.navigate('Login');
+    }
+
+    /**
+     * 
+     */
+    registerComponent() {
+        this.props.navigation.navigate('Register');
     }
 
     render() {
@@ -27,6 +32,7 @@ class Home extends Component {
                     tickets={this.props.tickets}
                     buy={false}
                     loginPage={this.loginComponent.bind(this)}
+                    registerPage={this.registerComponent.bind(this)}
                 />
             </View>
         );

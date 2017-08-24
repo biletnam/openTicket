@@ -13,7 +13,7 @@ const INITIAL_STATE = {
         'from': 'Edge hill',
         'to': 'Liverpool Lime ST',
         'service': 'Northern Railways',
-        'date': '2017-08-1',
+        'date': '2017-08-01',
         'price': 2
     },
     {

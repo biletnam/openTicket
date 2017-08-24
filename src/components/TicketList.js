@@ -4,7 +4,6 @@ import { Card } from './Card.js';
 import { CardSection } from './CardSection.js';
 import TicketItem from './TicketItem.js';
 import _ from 'lodash';
-import { reduxForm, } from 'redux-form';
 import DatePicker from 'react-native-datepicker';
 
 class TicketList extends Component {
@@ -25,18 +24,16 @@ class TicketList extends Component {
      * 
      */
     filterTickets(date) {
-        console.log('new Date', date);
         const filtered_tickets = [];
         _.map(this.state.tickets_main, ticket => {
             if (ticket.date < date) {
-                console.log('valid ticket');
                 return filtered_tickets.push(ticket);
             }
         });
 
-        if (filtered_tickets !== undefined) {
-            console.log('filtered_tickets => ', filtered_tickets);
-        }
+        // if (filtered_tickets !== undefined) {
+        //     console.log('filtered_tickets => ', filtered_tickets);
+        // }
 
         this.setState({
             tickets_copy: filtered_tickets,
@@ -49,7 +46,7 @@ class TicketList extends Component {
      * 
      */
     renderTickets() {
-        if (this.state.tickets_copy === null || Object.keys(this.state.tickets_copy) < 1) {
+        if (this.state.tickets_copy === null || this.state.tickets_copy.length < 1) {
             return (
                 <CardSection style={{ alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={{ alignSelf: 'center', justifyContent: 'center', color: '#d9534f', fontFamily: 'Chewy-Regular' }}>
@@ -58,21 +55,22 @@ class TicketList extends Component {
                 </CardSection>
             );
         }
-        console.log('renderTickets ticket_copy', this.state.tickets_copy);
 
         return (
-            <View style={{ alignSelf: 'flex-start', marginTop: 5, flexDirection: 'column' }}>
-                <Card style={{ backgroundColor: '#7bea7b', borderRadius: 4, marginBottom: 6, padding: 5 }}>
-                    <Text style={{ color: '#fff', fontFamily: 'Chewy-Regular' }}>{`${this.state.tickets_copy.length} tickets found!`}</Text></Card>
-                <View style={{ flex: 1, position: 'relative', flexDirection: 'column' }}>
-                    <FlatList
-                        data={this.state.tickets_copy}
-                        keyExtractor={ticket => ticket.date}
-                        renderItem={(ticket) => (
-                            <TicketItem ticket={ticket} buy={this.props.buy} loginPage={this.props.loginPage} />
-                        )}
-                    />
+            <View>
+                <View style={{ backgroundColor: '#7bea7b', borderRadius: 4, marginBottom: 6, padding: 5 }}>
+                    <Text style={{ color: '#fff', fontFamily: 'Chewy-Regular' }}>{`${this.state.tickets_copy.length} tickets found!`}</Text>
                 </View>
+
+
+                <FlatList
+                    data={this.state.tickets_copy}
+                    keyExtractor={ticket => ticket.date}
+                    renderItem={(ticket) => (
+                        <TicketItem ticket={ticket} buy={this.props.buy} loginPage={this.props.loginPage} />
+                    )}
+                />
+
             </View>
         );
     }
@@ -85,7 +83,7 @@ class TicketList extends Component {
          */
         return (
             <View>
-                <CardSection>
+                <CardSection style={{ backgroundColor: '#d1d1e0' }}>
                     <Text style={{ alignSelf: 'center', justifyContent: 'center', fontFamily: 'Chewy-Regular' }}> Display Until:</Text>
 
                     <DatePicker
@@ -119,7 +117,8 @@ class TicketList extends Component {
 /**
  * 
  */
-function formattedDate(d = new Date()) {
+function formattedDate() {
+    const d = new Date();
     let month = String(d.getMonth() + 1);
     let day = String(d.getDate());
     const year = String(d.getFullYear());

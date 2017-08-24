@@ -25,7 +25,6 @@ class TicketItem extends Component {
      * 
      */
     render() {
-        console.log('from ticketlist nav = ', this.props);
         const { buyButton, loginButton, loginTextStyle, buyTextStyle } = styles;
         const { item } = this.props.ticket;
         const btn = this.props.buy ? <Button description="Buy" buttonStyle={buyButton} textStyle={buyTextStyle} onPress={this.buyBtnClicked.bind(this)} /> :
@@ -37,16 +36,14 @@ class TicketItem extends Component {
                         size={26}
                     /></Button>);
         return (
-            <Card>
-                <View style={{ flexDirection: 'column', borderColor: '#ddd' }}>
-                    <Text style={{ fontFamily: 'Chewy-Regular', alignSelf: 'flex-start' }}>{`
+            <Card style={{ marginLeft: 15, marginRight: 15, backgroundColor: '#d1d1e0' }}>
+                <Text style={{ fontFamily: 'Chewy-Regular', alignSelf: 'flex-start' }}>{`
                         Date: ${item.date}
                         Source Station: ${item.from}
                         Destination Station: ${item.to}
                         Service: ${item.service}
                         Price: £ ${item.price}
                         `}</Text>
-                </View>
                 {btn}
             </Card>
         );
@@ -58,6 +55,7 @@ const styles = {
         flex: 1,
         backgroundColor: '#0275d8',
         borderColor: '#fff',
+        padding: 8
     },
     buyTextStyle: {
         color: '#fff',
@@ -68,6 +66,7 @@ const styles = {
         flex: 1,
         backgroundColor: '#d9534f',
         borderColor: '#fff',
+        padding: 8
     },
     loginTextStyle: {
         color: '#fff',
