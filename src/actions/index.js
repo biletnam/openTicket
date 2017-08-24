@@ -38,6 +38,7 @@ export function navToPostTicket(navigation) {
  * 
  */
 export function loginSuccess(user, navigation) {
+    // navigation.navigate('Home');
     return {
         type: LOGIN_SUCCESS,
         payload: user

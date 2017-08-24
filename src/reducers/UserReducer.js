@@ -1,4 +1,4 @@
-import { GET_DATA_FROM_SERVER } from '../actions';
+import { GET_DATA_FROM_SERVER, LOGIN_SUCCESS, GET_APP_STATE } from '../actions';
 
 const INITIAL_STATE = {
     allusers: [
@@ -76,6 +76,12 @@ export default function (state = null, action) {
     switch (action.type) {
         case GET_DATA_FROM_SERVER:
             return { ...state, ['users']: INITIAL_STATE.allusers, 'current user': INITIAL_STATE.currentUser };
+        case LOGIN_SUCCESS:
+            console.log('Action from reducer: ', action);
+
+            return { ...state, ['current_user']: { loggedin: true, user: action.payload } };
+        case GET_APP_STATE:
+            return state;
         default:
             return state;
     }

@@ -58,7 +58,7 @@ class TicketList extends Component {
 
         return (
             <View>
-                <View style={{ backgroundColor: '#7bea7b', borderRadius: 4, marginBottom: 6, padding: 5 }}>
+                <View style={{ backgroundColor: '#189a18', borderRadius: 4, marginBottom: 6, padding: 5 }}>
                     <Text style={{ color: '#fff', fontFamily: 'Chewy-Regular' }}>{`${this.state.tickets_copy.length} tickets found!`}</Text>
                 </View>
 

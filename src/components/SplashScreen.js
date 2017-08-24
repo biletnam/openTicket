@@ -40,7 +40,7 @@ class SplashScreen extends Component {
                         source={require('../../assets/icon/openticket.png')}
                     />
 
-                    <Text style={{ marginTop: 20, fontSize: 28, fontWeight: '900', color: '#000000' }}> OPEN TICKET </Text>
+                    <Text style={styles.textStyle}> OPEN TICKET </Text>
                 </View>
 
                 <View style={{ flex: 0.1, alignItems: 'center' }}>
@@ -52,6 +52,15 @@ class SplashScreen extends Component {
     }
 }
 
+const styles = {
+    textStyle: {
+        marginTop: 20,
+        fontSize: 28,
+        fontWeight: '900',
+        color: '#000000',
+        fontFamily: 'Chewy-Regular'
+    }
+};
 
 /**
  * React Timeout is a higher order component for React and React Native providing the wrapped component with safe versions of setTimeout, setInterval...

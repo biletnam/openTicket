@@ -14,7 +14,7 @@ class AboutUs extends Component {
         return (
             <Card>
                 <Text style={{ fontFamily: 'Chewy-Regular', fontSize: 30, textAlign: 'center', padding: 20, backgroundColor: 'transparent' }}> WE ARE NOVA</Text>
-                <CardSection style={{ backgroundColor: '#d1d1e0' }}>
+                <Card style={{ backgroundColor: '#d1d1e0' }}>
                     <Text style={{ textAlign: 'left', fontFamily: 'Chewy-Regular' }}>{`
                         We Are Nova 
                         29-31 Parliament Street
@@ -23,7 +23,7 @@ class AboutUs extends Component {
                         Email: info@wearenova.co.uk
                         Phone: 01234354354
                     `}</Text>
-                </CardSection>
+                </Card>
             </Card >
         );
     }

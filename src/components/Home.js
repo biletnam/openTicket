@@ -9,6 +9,13 @@ class Home extends Component {
     /**
      * 
      */
+    componentWillMount() {
+        this.props.getAppState();
+    }
+
+    /**
+     * 
+     */
     loginComponent() {
         this.props.navigation.navigate('Login');
     }
@@ -31,6 +38,7 @@ class Home extends Component {
                     screenProps={this.props.navigation}
                     tickets={this.props.tickets}
                     buy={false}
+                    users={this.props.users}
                     loginPage={this.loginComponent.bind(this)}
                     registerPage={this.registerComponent.bind(this)}
                 />

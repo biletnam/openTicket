@@ -44,20 +44,18 @@ class Login extends Component {
     onLoginSubmit() {
         if (this.validateForm()) {
             let loggedin = false;
-            _.map(this.props.users, (user) => {
-                debugger;
-                console.log('DB User', user);
-                console.log('Form User', this.state.username + this.state.password);
+            const { users } = this.props.users;
+            _.map(users, (user) => {
                 if (user.username === this.state.username && user.password === this.state.password) {
-                    console.log(user);
                     loggedin = true;
+                    loginSuccess(user, this.props.navigation);
                 }
             });
 
             if (!loggedin) {
                 this.setState({ login_failed: 'Login Failed. Please Try Again' });
                 const that = this;
-                setTimeout(() => {
+                this.props.setTimeout(() => {
                     that.setState({ login_failed: null });
                 }, 2000);
             }
@@ -72,7 +70,7 @@ class Login extends Component {
         if (this.state.password.length < 1) {
             this.setState({ invalid_password: 'Invalid Password length.' });
             const that = this;
-            setTimeout(() => {
+            this.props.setTimeout(() => {
                 that.setState({ invalid_password: null });
             }, 2000);
 
@@ -81,7 +79,7 @@ class Login extends Component {
         if (this.state.username.length < 1) {
             this.setState({ invalid_username: 'Invalid username length.' });
             const that = this;
-            setTimeout(() => {
+            this.props.setTimeout(() => {
                 that.setState({ invalid_username: null });
             }, 2000);
             valid = false;
@@ -149,7 +147,7 @@ const styles = {
         fontFamily: 'Chewy-Regular',
         textDecorationLine: 'underline',
         letterSpacing: 1,
-        color: '#0275d8'
+        color: '#189a18'
     },
     touchableHighlight: {
         alignItems: 'center',
@@ -171,4 +169,7 @@ function mapStateToProps({ users }) {
     };
 }
 
-export default connect(mapStateToProps, { getAppState, loginSuccess })(ReactTimeout(Login));
+/**
+ * 
+ */
+export default connect(mapStateToProps, { getAppState, loginSuccess })(Login);
