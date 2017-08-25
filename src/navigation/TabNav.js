@@ -3,7 +3,7 @@ import Home from '../components/Home.js';
 import Purchased from '../components/Purchased.js';
 import PostTicket from '../components/PostTicket.js';
 import AboutUs from '../components/AboutUs.js';
-import { Image, StyleSheet, Text } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import Login from '../components/Login.js';
 import Register from '../components/Register.js';
 
@@ -12,21 +12,20 @@ export const homeStack = StackNavigator({
     Home: {
         screen: Home,
         navigationOptions: {
-            title: 'Home',
-            backgroundColor: 'grey'
+            title: 'Home'
         }
     },
     Login: {
         screen: Login,
-        navigationOptions: {
-            title: 'Home'
-        }
+        navigationOptions: ({ navigation }) => ({
+            title: navigation.state.params.title
+        })
     },
     Register: {
         screen: Register,
-        navigationOptions: {
-            title: 'Home'
-        }
+        navigationOptions: ({ navigation }) => ({
+            title: navigation.state.params.title
+        })
     }
 });
 
@@ -43,7 +42,7 @@ export const purchase = StackNavigator({
     'My Purchase': {
         screen: Purchased,
         navigationOptions: {
-            title: 'Purchase'
+            title: 'My Purchase'
         }
     }
 });

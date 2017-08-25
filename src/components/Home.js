@@ -13,21 +13,8 @@ class Home extends Component {
         this.props.getAppState();
     }
 
-    /**
-     * 
-     */
-    loginComponent() {
-        this.props.navigation.navigate('Login');
-    }
-
-    /**
-     * 
-     */
-    registerComponent() {
-        this.props.navigation.navigate('Register');
-    }
-
     render() {
+        console.log('Home:', this.props.users.currentUser);
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
          * store. The third arguement is the store enhancer.
@@ -37,10 +24,7 @@ class Home extends Component {
                 <TicketList
                     screenProps={this.props.navigation}
                     tickets={this.props.tickets}
-                    buy={false}
                     users={this.props.users}
-                    loginPage={this.loginComponent.bind(this)}
-                    registerPage={this.registerComponent.bind(this)}
                 />
             </View>
         );

@@ -38,7 +38,8 @@ export function navToPostTicket(navigation) {
  * 
  */
 export function loginSuccess(user, navigation) {
-    // navigation.navigate('Home');
+    console.log('action creator loginSuccess', navigation);
+    navigation.goBack();
     return {
         type: LOGIN_SUCCESS,
         payload: user

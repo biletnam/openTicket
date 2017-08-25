@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Text, FlatList, View } from 'react-native';
-import { Card } from './Card.js';
 import { CardSection } from './CardSection.js';
 import TicketItem from './TicketItem.js';
 import _ from 'lodash';
 import DatePicker from 'react-native-datepicker';
+import { connect } from 'react-redux';
+import { getAppState } from '../actions';
 
 class TicketList extends Component {
 
@@ -14,10 +15,21 @@ class TicketList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: formattedDate(),
+            date: new Date(),
             tickets_main: this.props.tickets.tickets,
             tickets_copy: this.props.tickets.tickets
         };
+    }
+
+    loginComponent() {
+        this.props.screenProps.navigate('Login', { title: 'Home' });
+    }
+
+    /**
+     * 
+     */
+    registerComponent() {
+        this.props.screenProps.navigate('Register', { title: 'Login' });
     }
 
     /**
@@ -30,10 +42,6 @@ class TicketList extends Component {
                 return filtered_tickets.push(ticket);
             }
         });
-
-        // if (filtered_tickets !== undefined) {
-        //     console.log('filtered_tickets => ', filtered_tickets);
-        // }
 
         this.setState({
             tickets_copy: filtered_tickets,
@@ -67,7 +75,11 @@ class TicketList extends Component {
                     data={this.state.tickets_copy}
                     keyExtractor={ticket => ticket.date}
                     renderItem={(ticket) => (
-                        <TicketItem ticket={ticket} buy={this.props.buy} loginPage={this.props.loginPage} />
+                        <TicketItem
+                            ticket={ticket}
+                            buy={this.props.currentUser.loggedin}
+                            loginPage={this.loginComponent.bind(this)}
+                        />
                     )}
                 />
 
@@ -114,23 +126,13 @@ class TicketList extends Component {
     }
 }
 
-/**
- * 
- */
-function formattedDate() {
-    const d = new Date();
-    let month = String(d.getMonth() + 1);
-    let day = String(d.getDate());
-    const year = String(d.getFullYear());
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return `${year}-${month}-${day}`;
+function mapStateToProps(state) {
+    return {
+        currentUser: state.users.currentUser
+    };
 }
-
 
 /**
  *
  */
-export default TicketList;
+export default connect(mapStateToProps, { getAppState })(TicketList);

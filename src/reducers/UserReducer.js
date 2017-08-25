@@ -75,11 +75,9 @@ const INITIAL_STATE = {
 export default function (state = null, action) {
     switch (action.type) {
         case GET_DATA_FROM_SERVER:
-            return { ...state, ['users']: INITIAL_STATE.allusers, 'current user': INITIAL_STATE.currentUser };
+            return { ...state, ['users']: INITIAL_STATE.allusers, 'currentUser': INITIAL_STATE.currentUser };
         case LOGIN_SUCCESS:
-            console.log('Action from reducer: ', action);
-
-            return { ...state, ['current_user']: { loggedin: true, user: action.payload } };
+            return { ...state, ['currentUser']: { loggedin: true, user: action.payload } };
         case GET_APP_STATE:
             return state;
         default:

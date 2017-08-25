@@ -3,9 +3,9 @@ import { Text, View } from 'react-native';
 import { Button } from './Button.js';
 import { Card } from './Card.js';
 import { Icon } from 'react-native-elements';
+import { connect } from 'react-redux';
 
 class TicketItem extends Component {
-
 
     /**
      * 
@@ -27,7 +27,8 @@ class TicketItem extends Component {
     render() {
         const { buyButton, loginButton, loginTextStyle, buyTextStyle } = styles;
         const { item } = this.props.ticket;
-        const btn = this.props.buy ? <Button description="Buy" buttonStyle={buyButton} textStyle={buyTextStyle} onPress={this.buyBtnClicked.bind(this)} /> :
+        console.log('buy button', this.props.buy);
+        const btn = this.props.currentUser.loggedin ? <Button description="Buy" buttonStyle={buyButton} textStyle={buyTextStyle} onPress={this.buyBtnClicked.bind(this)} /> :
             this.props.myTickets ? null :
                 (<Button description="Login/Register to Buy" buttonStyle={loginButton} textStyle={loginTextStyle} onPress={this.loginBtnClicked.bind(this)}>
                     <Icon
@@ -75,4 +76,8 @@ const styles = {
     }
 };
 
-export default TicketItem;
+function mapStateToProps(state) {
+    return { currentUser: state.users.currentUser };
+}
+
+export default connect(mapStateToProps)(TicketItem);

@@ -9,6 +9,7 @@ import { LoginPrompt } from './labels/LoginPrompt.js';
 class PostTicket extends Component {
 
     render() {
+        console.log('Post Ticket', this.props);
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
          * store. The third arguement is the store enhancer.

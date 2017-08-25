@@ -35,7 +35,7 @@ class Login extends Component {
      * 
      */
     registerPage() {
-        this.props.navigation.navigate('Register');
+        this.props.navigation.navigate('Register', { title: 'Login' });
     }
 
     /**
@@ -48,7 +48,7 @@ class Login extends Component {
             _.map(users, (user) => {
                 if (user.username === this.state.username && user.password === this.state.password) {
                     loggedin = true;
-                    loginSuccess(user, this.props.navigation);
+                    this.props.loginSuccess(user, this.props.navigation);
                 }
             });
 
@@ -170,6 +170,6 @@ function mapStateToProps({ users }) {
 }
 
 /**
- * 
+ * mapStateToProps and mapDispatchToProps are both pure functions that are provided the stores “state” and “dispatch” respectively.
  */
-export default connect(mapStateToProps, { getAppState, loginSuccess })(Login);
+export default connect(mapStateToProps, { getAppState, loginSuccess })(ReactTimeout(Login));
