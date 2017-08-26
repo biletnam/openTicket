@@ -6,6 +6,7 @@ import _ from 'lodash';
 import DatePicker from 'react-native-datepicker';
 import { connect } from 'react-redux';
 import { getAppState } from '../actions';
+import { Loggedin } from './labels/Loggedin.js';
 
 class TicketList extends Component {
 
@@ -15,10 +16,21 @@ class TicketList extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loggedin: false,
+            currentUser: {},
             date: new Date(),
             tickets_main: this.props.tickets.tickets,
             tickets_copy: this.props.tickets.tickets
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('TicketList component will receive props.', nextProps);
+        this.setState({
+            loggedin: nextProps.currentUser.loggedin,
+            currentUser: nextProps.currentUser.user
+        });
+
     }
 
     loginComponent() {
@@ -32,6 +44,9 @@ class TicketList extends Component {
         this.props.screenProps.navigate('Register', { title: 'Login' });
     }
 
+    componentDidUpdate() {
+        console.log('TicketList component did update. loggedin state: ', this.state.loggedin);
+    }
     /**
      * 
      */
@@ -63,25 +78,29 @@ class TicketList extends Component {
                 </CardSection>
             );
         }
+        const username = this.state.loggedin ? <Loggedin username={this.state.currentUser.username} /> : null;
 
         return (
             <View>
+                {username}
                 <View style={{ backgroundColor: '#189a18', borderRadius: 4, marginBottom: 6, padding: 5 }}>
                     <Text style={{ color: '#fff', fontFamily: 'Chewy-Regular' }}>{`${this.state.tickets_copy.length} tickets found!`}</Text>
                 </View>
 
-
-                <FlatList
-                    data={this.state.tickets_copy}
-                    keyExtractor={ticket => ticket.date}
-                    renderItem={(ticket) => (
-                        <TicketItem
-                            ticket={ticket}
-                            buy={this.props.currentUser.loggedin}
-                            loginPage={this.loginComponent.bind(this)}
-                        />
-                    )}
-                />
+                <View style={{ marginBottom: 360 }}>
+                    <FlatList
+                        loggedin={this.state.loggedin}
+                        data={this.state.tickets_copy}
+                        keyExtractor={ticket => ticket.date}
+                        renderItem={(ticket) => (
+                            <TicketItem
+                                ticket={ticket}
+                                loggedin={this.state.loggedin}
+                                loginPage={this.loginComponent.bind(this)}
+                            />
+                        )}
+                    />
+                </View>
 
             </View>
         );

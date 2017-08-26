@@ -3,6 +3,7 @@ import TicketReducer from './TicketReducer.js';
 import UserReducer from './UserReducer.js';
 import NavReducer from './nav.js';
 import { reducer as FormReducer } from 'redux-form';
+import PostTicketReducer from './PostTicketReducer.js';
 
 /**
  * combineReducers neatly gathers results from all the reducers
@@ -17,5 +18,6 @@ export default combineReducers({
     tickets: TicketReducer,
     users: UserReducer,
     nav: NavReducer,
-    form: FormReducer
+    form: FormReducer,
+    postTicket: PostTicketReducer
 });

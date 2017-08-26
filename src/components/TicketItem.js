@@ -3,9 +3,33 @@ import { Text, View } from 'react-native';
 import { Button } from './Button.js';
 import { Card } from './Card.js';
 import { Icon } from 'react-native-elements';
-import { connect } from 'react-redux';
 
 class TicketItem extends Component {
+
+    /**
+     * 
+     * @param {*} props 
+     */
+    constructor(props) {
+        super(props);
+        this.state = {
+            loggedin: this.props.loggedin
+        };
+    }
+    
+    /**
+     * Note that React may call this method even if the props have not changed, so make sure to compare the current * and next values if you only want to handle changes. This may occur when the parent component causes your
+     * component to re-render.
+  
+     * React doesn't call componentWillReceiveProps with initial props during mounting. It only calls this method if * some of component's props may update. Calling this.setState generally doesn't trigger 
+     * componentWillReceiveProps.
+     */
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            loggedin: nextProps.loggedin
+        });
+
+    }
 
     /**
      * 
@@ -28,7 +52,7 @@ class TicketItem extends Component {
         const { buyButton, loginButton, loginTextStyle, buyTextStyle } = styles;
         const { item } = this.props.ticket;
         console.log('buy button', this.props.buy);
-        const btn = this.props.currentUser.loggedin ? <Button description="Buy" buttonStyle={buyButton} textStyle={buyTextStyle} onPress={this.buyBtnClicked.bind(this)} /> :
+        const btn = this.state.loggedin ? <Button description="Buy" buttonStyle={buyButton} textStyle={buyTextStyle} onPress={this.buyBtnClicked.bind(this)} /> :
             this.props.myTickets ? null :
                 (<Button description="Login/Register to Buy" buttonStyle={loginButton} textStyle={loginTextStyle} onPress={this.loginBtnClicked.bind(this)}>
                     <Icon
@@ -76,8 +100,5 @@ const styles = {
     }
 };
 
-function mapStateToProps(state) {
-    return { currentUser: state.users.currentUser };
-}
 
-export default connect(mapStateToProps)(TicketItem);
+export default TicketItem;

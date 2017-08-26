@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { getAppState, loginSuccess } from '../actions';
 import ReactTimeout from 'react-timeout';
 import _ from 'lodash';
+import cssStyle from '../../styles.js';
 
 
 class Login extends Component {
@@ -97,7 +98,7 @@ class Login extends Component {
          */
         return (
             <Card style={{ backgroundColor: '#d1d1e0', borderRadius: 10, padding: 10, marginLeft: 20, marginRight: 20 }}>
-                <FormLabel> <Text style={styles.textStyle}> Username</Text> </FormLabel>
+                <FormLabel> <Text style={cssStyle.formLabelTextStyle}> Username</Text> </FormLabel>
                 <Card style={{ backgroundColor: '#fff', borderRadius: 10, padding: 0, margin: 0 }}>
                     <FormInput
                         placeholder='Enter your username'
@@ -106,7 +107,7 @@ class Login extends Component {
                     />
                     {user_invalid}
                 </Card>
-                <FormLabel> <Text style={styles.textStyle}>Password</Text> </FormLabel>
+                <FormLabel> <Text style={cssStyle.formLabelTextStyle}>Password</Text> </FormLabel>
                 <Card style={{ backgroundColor: '#fff', borderRadius: 10, padding: 0, margin: 0 }}>
                     <FormInput
                         secureTextEntry
@@ -153,10 +154,6 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 10
-    },
-    textStyle: {
-        fontFamily: 'Chewy-Regular',
-        alignSelf: 'center'
     }
 };
 
