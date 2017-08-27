@@ -10,6 +10,8 @@ import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elemen
 import { Button } from './Button.js';
 import { CardSection } from './CardSection.js';
 import ReactTimeout from 'react-timeout';
+import DatePicker from 'react-native-datepicker';
+
 
 
 
@@ -67,16 +69,16 @@ class PostTicket extends Component {
             validForm = false;
             this.displayErrorMsg('error_to', 'Please provide the destination station.');
         }
-        if (!this.props.date.length) {
+        if (!this.props.date) {
             validForm = false;
             this.displayErrorMsg('error_date', 'Please provide the date of departure.');
         }
-        if (!this.props.price.length) {
+        if (!this.props.price) {
             validForm = false;
             this.displayErrorMsg('error_price', 'Please provide the price for the ticket.');
 
         }
-        if (!this.props.time.length) {
+        if (!this.props.time) {
             validForm = false;
             this.displayErrorMsg('error_time', 'Please provide the time of departure.');
         }
@@ -139,22 +141,51 @@ class PostTicket extends Component {
                 </Card>
 
                 <FormLabel> <Text style={styles.formLabelTextStyle}> Date </Text> </FormLabel>
-                <Card style={styles.cardFormInputStyle}>
-                    <FormInput
-                        onChangeText={(value) => this.props.onPostFormChange({ prop: 'date', value })}
-                        value={this.props.date}
+
+                <View style={styles.dateTimeView}>
+                    <DatePicker
+                        style={{ flex: 1, paddingTop: 10 }}
+                        mode="date"
+                        date={this.props.date}
+                        format="YYYY-MM-DD"
+                        confirmBtnText="Confirm"
+                        cancelBtnText="Cancel"
+                        customStyles={{
+                            dateInput: {
+                                marginLeft: 4,
+                                borderRadius: 10,
+                                marginBottom: 5,
+                                backgroundColor: '#fff'
+                            }
+                        }}
+                        onDateChange={(value) => this.props.onPostFormChange({ prop: 'date', value })}
+
                     />
-                    {error_date}
-                </Card>
+                </View>
+                {error_date}
 
                 <FormLabel> <Text style={styles.formLabelTextStyle}> Time </Text> </FormLabel>
-                <Card style={styles.cardFormInputStyle}>
-                    <FormInput
-                        onChangeText={(value) => this.props.onPostFormChange({ prop: 'time', value })}
-                        value={this.props.time}
+                <View style={styles.dateTimeView}>                
+                    <DatePicker
+                        style={{ flex: 1, paddingTop: 10 }}
+                        mode="time"
+                        format="HH:mm"
+                        date={this.props.time}
+                        confirmBtnText="Confirm"
+                        cancelBtnText="Cancel"
+                        customStyles={{
+                            dateInput: {
+                                marginLeft: 4,
+                                borderRadius: 10,
+                                marginBottom: 5,
+                                backgroundColor: '#fff'
+                            }
+                        }}
+                        onDateChange={(value) => this.props.onPostFormChange({ prop: 'time', value })}
+
                     />
-                    {error_time}
-                </Card>
+                </View>
+                {error_time}
 
                 <FormLabel> <Text style={styles.formLabelTextStyle}> Price </Text> </FormLabel>
                 <Card style={styles.cardFormInputStyle}>

@@ -11,21 +11,21 @@ const INITIAL_STATE = {
                 {
                     'from': 'Canterbury',
                     'to': 'Luton',
-                    'service': 'Northern Railways',
+                    'time': '13:35',
                     'date': '2018-01-7',
                     'price': 23
                 },
                 {
                     'from': 'Reading',
                     'to': 'Clapham Junction',
-                    'service': 'Southern Railways',
+                    'time': '11:35',
                     'date': '2018-02-23',
                     'price': 12
                 },
                 {
                     'from': 'Kings Cross',
                     'to': 'London Luton',
-                    'service': 'Southern Railways',
+                    'time': '09:35',
                     'date': '2017-12-20',
                     'price': 7
                 }
@@ -40,21 +40,21 @@ const INITIAL_STATE = {
                 {
                     'from': 'Canterbury',
                     'to': 'Luton',
-                    'service': 'Northern Railways',
+                    'time': '17:35',
                     'date': '2018-01-2',
                     'price': 15
                 },
                 {
                     'from': 'London Waterloo',
                     'to': 'Clapham Junction',
-                    'service': 'Northern Railways',
+                    'time': '19:35',
                     'date': '2018-03-30',
                     'price': 17
                 },
                 {
                     'from': 'Kingston',
                     'to': 'Reading',
-                    'service': 'Northern Railways',
+                    'time': '21:39',
                     'date': '2017-11-3',
                     'price': 5
                 }

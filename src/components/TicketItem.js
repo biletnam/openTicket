@@ -66,7 +66,7 @@ class TicketItem extends Component {
                         Date: ${item.date}
                         Source Station: ${item.from}
                         Destination Station: ${item.to}
-                        Service: ${item.service}
+                        Time: ${item.time}
                         Price: £ ${item.price}
                         `}</Text>
                 {btn}

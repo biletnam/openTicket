@@ -22,5 +22,12 @@ export default StyleSheet.create({
   },
   textStyle: {
     fontFamily: 'Chewy-Regular'
+  },
+  dateTimeView: {
+    flex: 1, justifyContent: 'flex-start',
+    //flex-start defaults the layout of item to the top left of the component
+    flexDirection: 'row',
+    borderColor: '#ddd',
+    position: 'relative'
   }
 });

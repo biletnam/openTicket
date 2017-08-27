@@ -89,9 +89,9 @@ class Login extends Component {
     }
 
     render() {
-        const user_invalid = this.state.invalid_username ? <FormValidationMessage><Text style={styles.textStyle}>{this.state.invalid_username}</Text></FormValidationMessage> : null;
-        const pass_invalid = this.state.invalid_password ? <FormValidationMessage><Text style={styles.textStyle}>{this.state.invalid_password}</Text></FormValidationMessage> : null;
-        const login_failed = this.state.login_failed ? <FormValidationMessage><Text style={styles.textStyle}>{this.state.login_failed}</Text></FormValidationMessage> : null;
+        const user_invalid = this.state.invalid_username ? <FormValidationMessage><Text style={cssStyle.textStyle}>{this.state.invalid_username}</Text></FormValidationMessage> : null;
+        const pass_invalid = this.state.invalid_password ? <FormValidationMessage><Text style={cssStyle.textStyle}>{this.state.invalid_password}</Text></FormValidationMessage> : null;
+        const login_failed = this.state.login_failed ? <FormValidationMessage><Text style={cssStyle.textStyle}>{this.state.login_failed}</Text></FormValidationMessage> : null;
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
          * store. The third arguement is the store enhancer.
