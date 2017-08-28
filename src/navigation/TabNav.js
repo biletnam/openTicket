@@ -3,16 +3,20 @@ import Home from '../components/Home.js';
 import Purchased from '../components/Purchased.js';
 import PostTicket from '../components/PostTicket.js';
 import AboutUs from '../components/AboutUs.js';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, Text } from 'react-native';
 import Login from '../components/Login.js';
 import Register from '../components/Register.js';
+import React from 'react';
+import { Header } from 'react-native-elements';
+import AuthLabel from '../components/labels/AuthLabel.js';
 
 
 export const homeStack = StackNavigator({
     Home: {
         screen: Home,
         navigationOptions: {
-            title: 'Home'
+            title: 'Home',
+            headerRight: <AuthLabel />            
         }
     },
     Login: {
@@ -33,7 +37,8 @@ export const postTicket = StackNavigator({
     'Post Ticket': {
         screen: PostTicket,
         navigationOptions: {
-            title: 'Post Ticket'
+            title: 'Post Ticket',
+            headerRight: <AuthLabel />
         }
     }
 });
@@ -42,7 +47,8 @@ export const purchase = StackNavigator({
     'My Purchase': {
         screen: Purchased,
         navigationOptions: {
-            title: 'My Purchase'
+            title: 'My Purchase',
+            headerRight: <AuthLabel />
         }
     }
 });
@@ -51,7 +57,9 @@ export const aboutUs = StackNavigator({
     'About Us': {
         screen: AboutUs,
         navigationOptions: {
-            title: 'About Us'
+            title: 'About Us',
+            headerRight: <AuthLabel />
+
         }
     }
 });
@@ -61,62 +69,50 @@ export const Tabs = TabNavigator({
     'Home': {
         screen: homeStack,
         navigationOptions: {
-            temp: {
-                tabBarVisible: true,
-                tabBarLabel: 'Home',
-                tabBarIcon: ({ tintColor }) => (
-                    <Image
-                        style={{ width: 20, height: 20, tintColor }}
-                        source={require('./icons/home.png')}
-                    />
-                )
-            }
+            tabBarVisible: true,
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ tintColor }) => (
+                <Image
+                    style={{ width: 20, height: 20, tintColor }}
+                    source={require('./icons/home.png')}
+                />
+            )
         }
     },
     'Post Ticket': {
         screen: postTicket,
         navigationOptions: {
-            temp: {
-                tabBarVisible: true,
-                tabBarLabel: 'Post Ticket',
-                tabBarIcon: ({ tintColor }) => (
-                    <Image
-                        style={{ width: 20, height: 20, tintColor }}
-                        source={require('./icons/home.png')}
-                    />
-                )
-            }
-
+            tabBarLabel: 'Post Ticket',
+            tabBarIcon: ({ tintColor }) => (
+                <Image
+                    style={{ width: 20, height: 20, tintColor }}
+                    source={require('./icons/post-ticket.png')}
+                />
+            )
         }
     },
     'Purchase': {
         screen: purchase,
         navigationOptions: {
-            temp: {
-                tabBarVisible: true,
-                tabBarLabel: 'Purchase',
-                tabBarIcon: ({ tintColor }) => (
-                    <Image
-                        style={{ width: 20, height: 20, tintColor }}
-                        source={require('./icons/home.png')}
-                    />
-                )
-            }
+            tabBarLabel: 'My Purchase',
+            tabBarIcon: ({ tintColor }) => (
+                <Image
+                    style={{ width: 20, height: 20, tintColor }}
+                    source={require('./icons/purchases.png')}
+                />
+            )
         }
     },
     'About Us': {
         screen: aboutUs,
         navigationOptions: {
-            temp: {
-                tabBarVisible: true,
-                tabBarLabel: 'About Us',
-                tabBarIcon: ({ tintColor }) => (
-                    <Image
-                        style={{ width: 20, height: 20, tintColor }}
-                        source={require('./icons/home.png')}
-                    />
-                )
-            }
+            tabBarLabel: 'About Us',
+            tabBarIcon: ({ tintColor }) => (
+                <Image
+                    style={{ width: 20, height: 20, tintColor }}
+                    source={require('./icons/about-us.png')}
+                />
+            )
         }
     }
 },
@@ -129,7 +125,7 @@ export const Tabs = TabNavigator({
             showLabel: true,
             upperCaseLabel: false,
             labelStyle: {
-                padding: 5,
+                paddingBottom: 5,
                 fontWeight: '900',
                 fontSize: 9
             }

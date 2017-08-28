@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { Button } from './Button.js';
 import { Card } from './Card.js';
 import { Icon } from 'react-native-elements';
+import { Confirm } from './Confirm.js';
 
 class TicketItem extends Component {
 
@@ -13,10 +14,12 @@ class TicketItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loggedin: this.props.loggedin
+            loggedin: this.props.loggedin,
+            showModal: false,
+            ticket: this.props.ticket.item
         };
     }
-    
+
     /**
      * Note that React may call this method even if the props have not changed, so make sure to compare the current * and next values if you only want to handle changes. This may occur when the parent component causes your
      * component to re-render.
@@ -35,7 +38,7 @@ class TicketItem extends Component {
      * 
      */
     buyBtnClicked() {
-
+        this.setState({ showModal: true });
     }
 
     /**
@@ -46,20 +49,34 @@ class TicketItem extends Component {
     }
 
     /**
+    * 
+    */
+    onAccept() {
+        console.log('Buy the ticket.');
+    }
+
+    /**
+     * 
+     */
+    onDecline() {
+        this.setState({ showModal: false });
+    }
+
+    /**
      * 
      */
     render() {
         const { buyButton, loginButton, loginTextStyle, buyTextStyle } = styles;
         const { item } = this.props.ticket;
-        console.log('buy button', this.props.buy);
         const btn = this.state.loggedin ? <Button description="Buy" buttonStyle={buyButton} textStyle={buyTextStyle} onPress={this.buyBtnClicked.bind(this)} /> :
             this.props.myTickets ? null :
                 (<Button description="Login/Register to Buy" buttonStyle={loginButton} textStyle={loginTextStyle} onPress={this.loginBtnClicked.bind(this)}>
                     <Icon
-                        name='sc-telegram'
+                        name='menu'
                         type='evilicon'
                         size={26}
                     /></Button>);
+
         return (
             <Card style={{ marginLeft: 15, marginRight: 15, backgroundColor: '#d1d1e0' }}>
                 <Text style={{ fontFamily: 'Chewy-Regular', alignSelf: 'flex-start' }}>{`
@@ -70,6 +87,16 @@ class TicketItem extends Component {
                         Price: £ ${item.price}
                         `}</Text>
                 {btn}
+
+                <Confirm
+                    visible={this.state.showModal}
+                    onAccept={this.onAccept.bind(this)}
+                    onDecline={this.onDecline.bind(this)}
+                >
+                    <Text style={styles.loginTextStyle}>
+                        Are you sure you want to purchase the ticket?
+                    </Text>
+                </Confirm>
             </Card>
         );
     }

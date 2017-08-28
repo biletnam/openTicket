@@ -9,6 +9,7 @@ import { getAppState, loginSuccess } from '../actions';
 import ReactTimeout from 'react-timeout';
 import _ from 'lodash';
 import cssStyle from '../../styles.js';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 
 class Login extends Component {
@@ -121,7 +122,8 @@ class Login extends Component {
                 <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 15 }}>
                     <CardSection>
                         <Button
-                            buttonStyle={{ padding: 8 }}
+                            icon={<Icon name='sign-in' color='#189a18' />}
+                            buttonStyle={{ padding: 8, flexDirection: 'row' }}
                             description='Login'
                             onPress={this.onLoginSubmit.bind(this)}
                         />

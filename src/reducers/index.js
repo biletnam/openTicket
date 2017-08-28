@@ -4,6 +4,7 @@ import UserReducer from './UserReducer.js';
 import NavReducer from './nav.js';
 import { reducer as FormReducer } from 'redux-form';
 import PostTicketReducer from './PostTicketReducer.js';
+import RegisterUser from './RegisterUser.js';
 
 /**
  * combineReducers neatly gathers results from all the reducers
@@ -19,5 +20,6 @@ export default combineReducers({
     users: UserReducer,
     nav: NavReducer,
     form: FormReducer,
-    postTicket: PostTicketReducer
+    postTicket: PostTicketReducer,
+    registerForm: RegisterUser
 });

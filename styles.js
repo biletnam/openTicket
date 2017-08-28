@@ -29,5 +29,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     borderColor: '#ddd',
     position: 'relative'
+  },
+  loginTextStyle: {
+    color: '#fff',
+    margin: 5,
+    fontFamily: 'Chewy-Regular'
   }
 });

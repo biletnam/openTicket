@@ -45,7 +45,7 @@ class TicketList extends Component {
     }
 
     componentDidUpdate() {
-        console.log('TicketList component did update. loggedin state: ', this.state.loggedin);
+        console.log('TicketList component did update. this.state.loggedin: ', this.state.loggedin);
     }
     /**
      * 
@@ -78,16 +78,15 @@ class TicketList extends Component {
                 </CardSection>
             );
         }
-        const username = this.state.loggedin ? <Loggedin username={this.state.currentUser.username} /> : null;
+
+
 
         return (
             <View>
-                {username}
-                <View style={{ backgroundColor: '#189a18', borderRadius: 4, marginBottom: 6, padding: 5 }}>
-                    <Text style={{ color: '#fff', fontFamily: 'Chewy-Regular' }}>{`${this.state.tickets_copy.length} tickets found!`}</Text>
+                <View style={{ backgroundColor: '#0275d8' }}>
+                    <Text style={{ color: '#fff', fontFamily: 'Chewy-Regular', alignSelf: 'center' }}>{`${this.state.tickets_copy.length} tickets found!`}</Text>
                 </View>
-
-                <View style={{ marginBottom: 360 }}>
+                <View style={{ marginBottom: 280 }}>
                     <FlatList
                         loggedin={this.state.loggedin}
                         data={this.state.tickets_copy}
@@ -108,13 +107,17 @@ class TicketList extends Component {
 
     render() {
         console.log('ticketlist', this.props);
+        const username = this.state.loggedin ? <Loggedin username={this.state.currentUser.username} /> : null;
+
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
          * store. The third arguement is the store enhancer.
          */
         return (
             <View>
-                <CardSection style={{ backgroundColor: '#d1d1e0' }}>
+                <CardSection style={{ backgroundColor: '#d1d1e0', position: 'relative' }}>
+                    {username}
+
                     <Text style={{ alignSelf: 'center', justifyContent: 'center', fontFamily: 'Chewy-Regular' }}> Display Until:</Text>
 
                     <DatePicker
