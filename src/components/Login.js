@@ -10,6 +10,7 @@ import ReactTimeout from 'react-timeout';
 import _ from 'lodash';
 import cssStyle from '../../styles.js';
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { Spinner } from './Spinner.js';
 
 
 class Login extends Component {
@@ -22,7 +23,8 @@ class Login extends Component {
             password: '',
             invalid_username: null,
             invalid_password: null,
-            login_failed: null
+            login_failed: null,
+            loading: false
         };
     }
 
@@ -37,7 +39,14 @@ class Login extends Component {
      * 
      */
     registerPage() {
-        this.props.navigation.navigate('Register', { title: 'Login' });
+        this.props.navigation.navigate('Register', { title: 'Login', register_success: this.onRegistrationComplete.bind(this) });
+    }
+
+    /**
+     * 
+     */
+    onRegistrationComplete() {
+        this.props.navigation.goBack();
     }
 
     /**
@@ -93,6 +102,14 @@ class Login extends Component {
         const user_invalid = this.state.invalid_username ? <FormValidationMessage><Text style={cssStyle.textStyle}>{this.state.invalid_username}</Text></FormValidationMessage> : null;
         const pass_invalid = this.state.invalid_password ? <FormValidationMessage><Text style={cssStyle.textStyle}>{this.state.invalid_password}</Text></FormValidationMessage> : null;
         const login_failed = this.state.login_failed ? <FormValidationMessage><Text style={cssStyle.textStyle}>{this.state.login_failed}</Text></FormValidationMessage> : null;
+        const renderLoginButton = this.state.loading ? <Spinner /> : <Button
+            icon={<Icon name='sign-in' color='#189a18' />}
+            buttonStyle={{ padding: 8, flexDirection: 'row' }}
+            description='Login'
+            onPress={this.onLoginSubmit.bind(this)}
+        />;
+
+
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
          * store. The third arguement is the store enhancer.
@@ -121,12 +138,7 @@ class Login extends Component {
                 {login_failed}
                 <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 15 }}>
                     <CardSection>
-                        <Button
-                            icon={<Icon name='sign-in' color='#189a18' />}
-                            buttonStyle={{ padding: 8, flexDirection: 'row' }}
-                            description='Login'
-                            onPress={this.onLoginSubmit.bind(this)}
-                        />
+                        {renderLoginButton}
                     </CardSection>
                 </View>
 

@@ -14,7 +14,6 @@ class Home extends Component {
     }
 
     render() {
-        console.log('Home:', this.props.users.currentUser);
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
          * store. The third arguement is the store enhancer.
@@ -23,8 +22,9 @@ class Home extends Component {
             <View>
                 <TicketList
                     screenProps={this.props.navigation}
-                    tickets={this.props.tickets}
+                    tickets={this.props.tickets.tickets}
                     users={this.props.users}
+                    myTickets={false}
                 />
             </View>
         );

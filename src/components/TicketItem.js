@@ -52,7 +52,7 @@ class TicketItem extends Component {
     * 
     */
     onAccept() {
-        console.log('Buy the ticket.');
+        this.setState({ showModal: false });
     }
 
     /**
@@ -70,19 +70,15 @@ class TicketItem extends Component {
         const { item } = this.props.ticket;
         const btn = this.state.loggedin ? <Button description="Buy" buttonStyle={buyButton} textStyle={buyTextStyle} onPress={this.buyBtnClicked.bind(this)} /> :
             this.props.myTickets ? null :
-                (<Button description="Login/Register to Buy" buttonStyle={loginButton} textStyle={loginTextStyle} onPress={this.loginBtnClicked.bind(this)}>
-                    <Icon
-                        name='menu'
-                        type='evilicon'
-                        size={26}
-                    /></Button>);
+                (<Button description="Login/Register to Buy" buttonStyle={loginButton} textStyle={loginTextStyle} onPress={this.loginBtnClicked.bind(this)} />
+                );
 
         return (
             <Card style={{ marginLeft: 15, marginRight: 15, backgroundColor: '#d1d1e0' }}>
                 <Text style={{ fontFamily: 'Chewy-Regular', alignSelf: 'flex-start' }}>{`
                         Date: ${item.date}
-                        Source Station: ${item.from}
-                        Destination Station: ${item.to}
+                        Departure: ${item.from}
+                        Destination: ${item.to}
                         Time: ${item.time}
                         Price: £ ${item.price}
                         `}</Text>

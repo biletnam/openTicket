@@ -25,7 +25,6 @@ class AuthLabel extends Component {
      * 
      */
     componentWillReceiveProps(nextProps) {
-        console.log('AuthLabel props: ', nextProps);
         if (this.state.loggedin !== nextProps.user.loggedin) {
             this.setState({
                 loggedin: !this.state.loggedin
@@ -52,13 +51,13 @@ class AuthLabel extends Component {
      */
     onAccept() {
         this.props.userSignOut();
+        this.setState({ showModal: false });        
     }
 
     /**
      * 
      */
     render() {
-        console.log('AuthLabel Header Render.');
         if (this.state.loggedin) {
             return (
                 <View style={{ marginRight: 15 }}>

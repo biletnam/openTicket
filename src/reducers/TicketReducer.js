@@ -1,4 +1,4 @@
-import { GET_DATA_FROM_SERVER, GET_APP_STATE } from '../actions';
+import { GET_DATA_FROM_SERVER, GET_APP_STATE, POST_TICKET } from '../actions';
 
 const INITIAL_STATE = {
     tickets: [{
@@ -107,6 +107,8 @@ export default function (state = null, action) {
             return { ...state, ['tickets']: INITIAL_STATE.tickets, ['splashData']: true };
         case GET_APP_STATE:
             return state;
+        case POST_TICKET:
+            return { ...state, ['tickets']: state.tickets.concat(action.payload) };
         default:
             return state;
     }

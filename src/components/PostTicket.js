@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import Login from './Login.js';
 import { connect } from 'react-redux';
-import { getAppState, onPostFormChange } from '../actions';
+import { getAppState, onPostFormChange, postTicket, clearPostTicketForm } from '../actions';
 import { LoginPrompt } from './labels/LoginPrompt.js';
 import { Card } from './Card.js';
 import styles from '../../styles.js';
@@ -38,7 +38,6 @@ class PostTicket extends Component {
      * 
      */
     componentWillReceiveProps(nextProps) {
-        console.log('Post Ticket nextprops: ', nextProps);
         this.setState({
             userLoggedin: nextProps.users.currentUser.loggedin
         });
@@ -60,7 +59,6 @@ class PostTicket extends Component {
      */
     formIsValid() {
         let validForm = true;
-        console.log('From length inspect: ', this.props.from);
         if (!this.props.from) {
             validForm = false;
             this.displayErrorMsg('error_from', 'Please provide the departure station.');
@@ -85,9 +83,15 @@ class PostTicket extends Component {
         return validForm;
     }
 
+    /**
+     * 
+     */
     postFormSubmit() {
         if (this.formIsValid()) {
-            console.log('Post Form is Valid!!');
+            const { from, to, date, price, time } = this.props;
+            this.props.postTicket({ from, to, date, price, time });
+            this.props.navigation.navigate('Home');
+            this.props.clearPostTicketForm();
         }
     }
 
@@ -95,7 +99,6 @@ class PostTicket extends Component {
      * 
      */
     render() {
-        console.log('Post Ticket', this.props);
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
          * store. The third arguement is the store enhancer.
@@ -165,7 +168,7 @@ class PostTicket extends Component {
                 {error_date}
 
                 <FormLabel> <Text style={styles.formLabelTextStyle}> Time </Text> </FormLabel>
-                <View style={styles.dateTimeView}>                
+                <View style={styles.dateTimeView}>
                     <DatePicker
                         style={{ flex: 1, paddingTop: 10 }}
                         mode="time"
@@ -219,4 +222,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { getAppState, onPostFormChange })(ReactTimeout(PostTicket));
+export default connect(mapStateToProps, { getAppState, onPostFormChange, postTicket, clearPostTicketForm })(ReactTimeout(PostTicket));

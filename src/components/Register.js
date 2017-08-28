@@ -4,7 +4,7 @@ import { Card } from './Card';
 import { Button } from './Button.js';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { onRegisterFormChanged } from '../actions';
+import { onRegisterFormChanged, registerNewUser, clearRegistrationForm } from '../actions';
 import ReactTimeout from 'react-timeout';
 
 
@@ -27,7 +27,10 @@ class Register extends Component {
      */
     registerUser() {
         if (this.formIsValid()) {
-            console.log('Proceed to register the user.');
+            const { firstname, surname, username, password, confirmPassword } = this.props;
+            this.props.registerNewUser({ firstname, surname, username, password, confirmPassword, ticket_purchased: [] });
+            this.props.navigation.state.params.register_success();
+            this.props.clearRegistrationForm();
         }
     }
 
@@ -49,7 +52,6 @@ class Register extends Component {
      */
     formIsValid() {
         let validForm = true;
-        console.log('From length inspect: ', this.props.from);
         if (!this.props.firstname) {
             validForm = false;
             this.displayErrorMsg('firstname_error', 'Please provide your firstname.');
@@ -82,7 +84,7 @@ class Register extends Component {
     }
 
     render() {
-
+        console.log('register props', this.props);
         const error_firstname = this.state.firstname_error ? <FormValidationMessage><Text style={styles.textStyle}>{this.state.firstname_error}</Text></FormValidationMessage> : null;
         const error_surname = this.state.surname_error ? <FormValidationMessage><Text style={styles.textStyle}>{this.state.surname_error}</Text></FormValidationMessage> : null;
         const error_username = this.state.username_error ? <FormValidationMessage><Text style={styles.textStyle}>{this.state.username_error}</Text></FormValidationMessage> : null;
@@ -187,4 +189,4 @@ const mapStateToProps = (state) => {
     return { firstname, surname, username, password, confirmPassword };
 };
 
-export default connect(mapStateToProps, { onRegisterFormChanged })(ReactTimeout(Register));
+export default connect(mapStateToProps, { onRegisterFormChanged, registerNewUser, clearRegistrationForm })(ReactTimeout(Register));

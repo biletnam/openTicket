@@ -1,4 +1,4 @@
-import { GET_DATA_FROM_SERVER, LOGIN_SUCCESS, GET_APP_STATE, USER_SIGN_OUT } from '../actions';
+import { GET_DATA_FROM_SERVER, LOGIN_SUCCESS, GET_APP_STATE, USER_SIGN_OUT, REGISTER_NEW_USER } from '../actions';
 
 const INITIAL_STATE = {
     allusers: [
@@ -82,6 +82,10 @@ export default function (state = null, action) {
             return state;
         case USER_SIGN_OUT:
             return { ...state, ['currentUser']: { loggedin: false } };
+        case REGISTER_NEW_USER:
+            return {
+                ...state, ['users']: state.users.concat(action.payload), ['currentUser']: { loggedin: true, user: action.payload }
+            };
         default:
             return state;
     }

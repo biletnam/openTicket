@@ -19,20 +19,28 @@ class TicketList extends Component {
             loggedin: false,
             currentUser: {},
             date: new Date(),
-            tickets_main: this.props.tickets.tickets,
-            tickets_copy: this.props.tickets.tickets
+            tickets_main: this.props.tickets,
+            tickets_copy: this.props.tickets
         };
     }
 
+    /**
+     * 
+     * @param {*} nextProps 
+     */
     componentWillReceiveProps(nextProps) {
-        console.log('TicketList component will receive props.', nextProps);
         this.setState({
             loggedin: nextProps.currentUser.loggedin,
-            currentUser: nextProps.currentUser.user
+            currentUser: nextProps.currentUser.user,
+            tickets_copy: nextProps.tickets,
+            tickets_main: nextProps.tickets
         });
 
     }
 
+    /**
+     * 
+     */
     loginComponent() {
         this.props.screenProps.navigate('Login', { title: 'Home' });
     }
@@ -45,8 +53,8 @@ class TicketList extends Component {
     }
 
     componentDidUpdate() {
-        console.log('TicketList component did update. this.state.loggedin: ', this.state.loggedin);
     }
+
     /**
      * 
      */
@@ -79,8 +87,6 @@ class TicketList extends Component {
             );
         }
 
-
-
         return (
             <View>
                 <View style={{ backgroundColor: '#0275d8' }}>
@@ -96,6 +102,7 @@ class TicketList extends Component {
                                 ticket={ticket}
                                 loggedin={this.state.loggedin}
                                 loginPage={this.loginComponent.bind(this)}
+                                myTickets={this.props.myTickets}
                             />
                         )}
                     />
@@ -106,9 +113,6 @@ class TicketList extends Component {
     }
 
     render() {
-        console.log('ticketlist', this.props);
-        const username = this.state.loggedin ? <Loggedin username={this.state.currentUser.username} /> : null;
-
         /**
          * The second arguement for createStore function is any initial state that we want to pass to redux
          * store. The third arguement is the store enhancer.
@@ -116,8 +120,6 @@ class TicketList extends Component {
         return (
             <View>
                 <CardSection style={{ backgroundColor: '#d1d1e0', position: 'relative' }}>
-                    {username}
-
                     <Text style={{ alignSelf: 'center', justifyContent: 'center', fontFamily: 'Chewy-Regular' }}> Display Until:</Text>
 
                     <DatePicker

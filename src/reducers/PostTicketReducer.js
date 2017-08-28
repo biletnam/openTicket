@@ -1,4 +1,4 @@
-import { ON_POST_FORM_CHANGE } from '../actions';
+import { ON_POST_FORM_CHANGE, CLEAR_POST_TICKET_FORM } from '../actions';
 
 const INITIAL_STATE = {
     date: formattedDate(),
@@ -15,6 +15,8 @@ export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case ON_POST_FORM_CHANGE:
             return { ...state, [action.payload.prop]: action.payload.value };
+        case CLEAR_POST_TICKET_FORM:
+            return INITIAL_STATE;
         default:
             return state;
     }
