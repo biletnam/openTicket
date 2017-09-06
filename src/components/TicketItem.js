@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import { Button } from './Button.js';
 import { Card } from './Card.js';
-import { Icon } from 'react-native-elements';
 import { Confirm } from './Confirm.js';
 
 class TicketItem extends Component {

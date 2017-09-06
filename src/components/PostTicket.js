@@ -12,9 +12,6 @@ import { CardSection } from './CardSection.js';
 import ReactTimeout from 'react-timeout';
 import DatePicker from 'react-native-datepicker';
 
-
-
-
 class PostTicket extends Component {
 
     /**
@@ -74,7 +71,6 @@ class PostTicket extends Component {
         if (!this.props.price) {
             validForm = false;
             this.displayErrorMsg('error_price', 'Please provide the price for the ticket.');
-
         }
         if (!this.props.time) {
             validForm = false;

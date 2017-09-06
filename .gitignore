@@ -33,6 +33,7 @@ local.properties
 # node.js
 #
 node_modules
+my-release-key.keystore
 npm-debug.log
 yarn-error.log
 

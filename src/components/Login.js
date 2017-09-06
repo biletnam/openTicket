@@ -9,7 +9,7 @@ import { getAppState, loginSuccess } from '../actions';
 import ReactTimeout from 'react-timeout';
 import _ from 'lodash';
 import cssStyle from '../../styles.js';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Spinner } from './Spinner.js';
 
 

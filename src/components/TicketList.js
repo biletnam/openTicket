@@ -6,7 +6,6 @@ import _ from 'lodash';
 import DatePicker from 'react-native-datepicker';
 import { connect } from 'react-redux';
 import { getAppState } from '../actions';
-import { Loggedin } from './labels/Loggedin.js';
 
 class TicketList extends Component {
 
@@ -35,24 +34,20 @@ class TicketList extends Component {
             tickets_copy: nextProps.tickets,
             tickets_main: nextProps.tickets
         });
-
     }
 
     /**
      * 
      */
     loginComponent() {
-        this.props.screenProps.navigate('Login', { title: 'Home' });
+        this.props.screenProps.navigate('Login', { title: 'Login' });
     }
 
     /**
      * 
      */
     registerComponent() {
-        this.props.screenProps.navigate('Register', { title: 'Login' });
-    }
-
-    componentDidUpdate() {
+        this.props.screenProps.navigate('Register', { title: 'Registration' });
     }
 
     /**
@@ -87,9 +82,10 @@ class TicketList extends Component {
             );
         }
 
+        const background = this.state.loggedin ? '#0275d8' : '#d9534f';
         return (
             <View>
-                <View style={{ backgroundColor: '#0275d8' }}>
+                <View style={{ backgroundColor: `${background}` }}>
                     <Text style={{ color: '#fff', fontFamily: 'Chewy-Regular', alignSelf: 'center' }}>{`${this.state.tickets_copy.length} tickets found!`}</Text>
                 </View>
                 <View style={{ marginBottom: 280 }}>
